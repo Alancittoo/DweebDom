@@ -12,7 +12,7 @@ class Board(db.Model):
     is_public = db.Column(db.Boolean, default=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
-    board_users_relationship = db.relationship('User', back_populates='user_boards') #done
+    board_users_relationship = db.relationship('User', back_populates='user_boards_relationship') #done
 
     #ASSOCIATION
     board_pins_association = db.relationship('Pin',

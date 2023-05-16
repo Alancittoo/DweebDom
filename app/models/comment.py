@@ -11,8 +11,8 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     pin_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('pins.id')), nullable=False)
 
-    comment_users = db.relationship('User', back_populates='user_comments_relationship')#done
-    comment_pins = db.relationship('Pin', back_populates='pin_comments_relationship')#done
+    comment_users_relationship = db.relationship('User', back_populates='user_comments_relationship')#done
+    comment_pins_relationship = db.relationship('Pin', back_populates='pin_comments_relationship')#done
 
     def to_dict(self):
         return {
