@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class Pins(db.Model):
+class Pin(db.Model):
     __tablename__ = 'pins'
 
     if environment == "production":
@@ -15,7 +15,7 @@ class Pins(db.Model):
 
     pin_users_relationship = db.relationship('User', back_populates='user_pins_relationship') #done
     pin_comments_relationship = db.relationship('Comment', back_populates='comment_pins_relationship')#done
-    pin_likes_relationship = db.relathionship('Like', back_populates='like_pins_relationship')#done
+    pin_likes_relationship = db.relationship('Like', back_populates='like_pins_relationship')#done
 
     #ASSOCIATION
     pin_boards_association = db.relationship('Board',
