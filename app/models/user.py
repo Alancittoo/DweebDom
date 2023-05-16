@@ -13,6 +13,20 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    profile_picture = db.Column(db.String, nullable=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+
+    # Regular relationships, gotta do the other models first
+    user_boards_relationship = db.relationship('Board', back_populates='board_users_relationship') #done
+    user_pins_relationship = db.relationship('Pin', back_populates='pin_users_relationship') #done
+    user_comments_relationship = db.relationship('Comment', back_populates='user') #done
+    user_likes_relationship = db.relationship('Like', back_populates='user') #done
+
+    # Asscociation
+    followed = db.relationship(
+        'User', secondary='follows', back_populates='followers'
+    )
 
     @property
     def password(self):
@@ -29,5 +43,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'profile_picture': self.profile_picture,
+            'first_name': self.first_name,
+            'last_name': self.last_name
         }
