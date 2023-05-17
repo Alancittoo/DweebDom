@@ -27,7 +27,7 @@ def create_pin():
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
-        data = request.get_json()
+        # data = request.get_json()
         new_pin = Pin(
             image_url = form.data['image_url'],
             title = form.data['title'],
@@ -59,14 +59,16 @@ def update_pin(pin_id):
     else:
         return form.errors
 
-@pin_routes.route('/delete/<int:pin_id>')
+@pin_routes.route('/delete/<int:pin_id>', methods=['DELETE'])
 @login_required
 def delete_pin(pin_id):
     pin = Pin.query.get(pin_id)
 
-    if pin:
-        db.session.delete(pin)
-        db.session.commit()
-        return {'mesage': "PIN DELETED"}
-    else:
-        return {'message': 'ERROR, PIN NOT FOUND'}
+    if not pin:
+        return {'mesage': "PIN NOT FOUND"}, 404
+    if pin.user_id != current_user.id:
+        return {"error": "You aren't Authorized to delete this item"}, 400
+
+    db.session.delete(pin)
+    db.session.commit()
+    return {'mesage': "PIN DELETED"}, 200
