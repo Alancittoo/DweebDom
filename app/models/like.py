@@ -8,7 +8,7 @@ class Like(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    pin_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('pin.id')), nullable=False)
+    pin_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('pins.id')), nullable=False)
 
     like_users_relationship = db.relationship('User', back_populates='user_likes_relationship')#done
     like_pins_relationship = db.relationship('Pin', back_populates='pin_likes_relationship')#done
