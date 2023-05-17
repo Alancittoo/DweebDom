@@ -6,4 +6,4 @@ pin_tags = db.Table('pin_tags',
     )
 
 if environment == 'production':
-    pin_tags.schema = {'schema': SCHEMA}
+    pin_tags.schema =  SCHEMA

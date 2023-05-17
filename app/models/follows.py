@@ -7,4 +7,4 @@
 #     )
 
 # if environment == 'production':
-#      follows.schema = {'schema': SCHEMA}
+#      follows.schema = SCHEMA

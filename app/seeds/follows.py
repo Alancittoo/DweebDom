@@ -15,7 +15,7 @@
 #     # db.session.add(follow3)
 #     # db.session.add(follow4)
 
-#     db.session.execute(follows_insert, data)
+#     db.session.execute(follows.insert().values(data))
 
 #     db.session.commit()
 

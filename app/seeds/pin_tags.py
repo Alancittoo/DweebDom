@@ -2,7 +2,7 @@ from app.models import db, environment, SCHEMA, pin_tags
 from sqlalchemy.sql import text, insert
 
 def seed_pin_tags():
-    pin_tags_insert = insert(pin_tags)
+    # pin_tags_insert = insert(pin_tags)
 
     data = [
         {'tag_id': 1, 'pin_id': 1},
@@ -14,8 +14,8 @@ def seed_pin_tags():
     # db.session.add(pin_tag2)
     # db.session.add(pin_tag3)
 
-    db.session.execute(pin_tags_insert, data)
-
+    # db.session.execute(pin_tags_insert, data)
+    db.session.execute(pin_tags.insert().values(data))
     db.session.commit()
 
 def undo_pin_tags():
