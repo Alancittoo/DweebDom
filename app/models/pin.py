@@ -35,7 +35,6 @@ class Pin(db.Model):
         'title': self.title,
         'description': self.description,
         'user_id': self.user_id,
-        'board_id': self.board_id
     }
 
     def to_dict_no_item(self):
