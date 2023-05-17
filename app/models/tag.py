@@ -13,7 +13,7 @@ class Tag(db.Model):
 
 
 #Associaition
-    pin_tags_association = db.relationship('Pin',
+    tag_pins_association = db.relationship('Pin',
         secondary='pin_tags',
         back_populates='pin_tags_association'
         )

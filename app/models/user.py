@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .follows import follows
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -25,7 +26,11 @@ class User(db.Model, UserMixin):
 
     # Asscociation
     followed = db.relationship(
-        'User', secondary='follows', back_populates='followers'
+        'User', secondary='follows', primaryjoin=(follows.c.follower_id == id), secondaryjoin=(follows.c.followed_id == id), foreign_keys=[follows.c.follower_id, follows.c.followed_id], back_populates='followers'
+    )
+
+    followers = db.relationship(
+        'User', secondary='follows', primaryjoin=(follows.c.followed_id == id), secondaryjoin=(follows.c.follower_id == id), foreign_keys=[follows.c.followed_id, follows.c.follower_id], back_populates='followed'
     )
 
     @property
