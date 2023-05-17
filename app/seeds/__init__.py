@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .pin import seed_pins, undo_pins
 from .board import seed_boards, undo_boards
 from .board_pins import seed_board_pins, undo_board_pins
-from .follows import seed_follows, undo_follows
+# from .follows import seed_follows, undo_follows
 from .comment import seed_comments, undo_comments
 from .tag import seed_tags, undo_tags
 from .pin_tags import seed_pin_tags, undo_pin_tags
@@ -28,7 +28,7 @@ def seed():
         undo_pins()
         undo_boards()
         undo_board_pins()
-        undo_follows()
+        # undo_follows()
         undo_comments()
         undo_tags()
         undo_pin_tags()
@@ -37,7 +37,7 @@ def seed():
     seed_pins()
     seed_boards()
     seed_board_pins()
-    seed_follows()
+    # seed_follows()
     seed_comments()
     seed_tags()
     seed_pin_tags()
@@ -52,7 +52,7 @@ def undo():
     undo_pins()
     undo_boards()
     undo_board_pins()
-    undo_follows()
+    # undo_follows()
     undo_comments()
     undo_tags()
     undo_pin_tags()
