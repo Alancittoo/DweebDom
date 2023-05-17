@@ -2,7 +2,7 @@ from app.models import db, environment, SCHEMA, board_pins
 from sqlalchemy.sql import text, insert
 
 def seed_board_pins():
-    board_pins_insert = insert(board_pins)
+    # board_pins_insert = insert(board_pins)
 
     data = [
         {'board_id': 1 , 'pin_id': 2},
@@ -45,8 +45,8 @@ def seed_board_pins():
     # db.session.add(board_pin18)
     board_data = []
     for res in data:
-        board_data.append(data)
-    db.session.execute(board_pins.insert().values(res))
+        board_data.append(res)
+    db.session.execute(board_pins.insert().values(board_data))
     db.session.commit()
 
 
