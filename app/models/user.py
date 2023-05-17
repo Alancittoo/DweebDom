@@ -25,13 +25,13 @@ class User(db.Model, UserMixin):
     user_likes_relationship = db.relationship('Like', back_populates='like_users_relationship') #done
 
     # Asscociation
-    followed = db.relationship(
-        'User', secondary='follows', primaryjoin=(follows.c.follower_id == id), secondaryjoin=(follows.c.followed_id == id), foreign_keys=[follows.c.follower_id, follows.c.followed_id], back_populates='followers'
-    )
+    # followed = db.relationship(
+    #     'User', secondary='follows', primaryjoin=(follows.c.follower_id == id), secondaryjoin=(follows.c.followed_id == id), foreign_keys=[follows.c.follower_id, follows.c.followed_id], back_populates='followers'
+    # )
 
-    followers = db.relationship(
-        'User', secondary='follows', primaryjoin=(follows.c.followed_id == id), secondaryjoin=(follows.c.follower_id == id), foreign_keys=[follows.c.followed_id, follows.c.follower_id], back_populates='followed'
-    )
+    # followers = db.relationship(
+    #     'User', secondary='follows', primaryjoin=(follows.c.followed_id == id), secondaryjoin=(follows.c.follower_id == id), foreign_keys=[follows.c.followed_id, follows.c.follower_id], back_populates='followed'
+    # )
 
     @property
     def password(self):
