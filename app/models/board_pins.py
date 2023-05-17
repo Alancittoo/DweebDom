@@ -6,4 +6,4 @@ board_pins = db.Table('board_pins',
     )
 
 if environment == 'production':
-    board_pins.schema = {'schema': SCHEMA}
+    board_pins.schema = SCHEMA
