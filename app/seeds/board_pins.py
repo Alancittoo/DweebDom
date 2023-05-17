@@ -46,7 +46,7 @@ def seed_board_pins():
     board_data = []
     for res in data:
         board_data.append(res)
-    db.session.execute(board_pins.insert().values(board_data))
+    db.session.execute(board_pins.insert().values(data))
     db.session.commit()
 
 
