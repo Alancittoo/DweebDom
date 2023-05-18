@@ -40,7 +40,7 @@ export const thunkGetBoards = (user_id) => async (dispatch) => {
     const res = await fetch(`/api/boards/${user_id}`)
     if (res.ok){
         const data = await res.json()
-        dispatch(getBoards(userId))
+        dispatch(getBoards(user_id))
         return data
     }
     else {
