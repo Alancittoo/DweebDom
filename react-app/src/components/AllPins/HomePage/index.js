@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { thunkGetPins, thunkGetSinglePin } from "../../../store/pin";
-
+import { thunkGetPins, thunkGetSinglePin } from "../../../store/pin"
+import OpenModalButton from "../../OpenModalButton";
+import OpenModalPinDetail from "../../SinglePinDetail";
+import PinImage from "..";
 import './HomePage.css'
 
 function HomePage() {
@@ -13,7 +15,7 @@ function HomePage() {
     console.log('TEST', Object.values(useSelector(state => state.pins)))
     const pins = Object.values(useSelector(state => state.pins.pins))
 
-    useEffect( () => {
+    useEffect(() => {
         dispatch(thunkGetPins())
     }, [dispatch])
 
@@ -23,11 +25,7 @@ function HomePage() {
             <div className="HomePage-image-container">
                 {pins.map(pin => (
                     <div key={pin.pinId} className="HomePage-pin-container">
-                        <NavLink to={`/pins/${pin.id}`}>
-                            <img classname='HomePage-pin-image' src={pin.image_url} alt={pin.title} />
-                        </NavLink>
-                        <h3 className="HomePage-pin-title">{pin.title}</h3>
-                        <p className="HomePage-pin-desc">{pin.description}</p>
+                        <PinImage pin={pin} />
                     </div>
                 ))}
             </div>

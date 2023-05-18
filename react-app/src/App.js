@@ -20,7 +20,7 @@ function App() {
       {isLoaded && (
         <Switch>
 
-          <Route path='/'>
+          <Route path='/home'>
             <HomePage />
           </Route>
 
