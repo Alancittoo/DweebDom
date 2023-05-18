@@ -40,7 +40,8 @@ export const thunkGetPins = () => async (dispatch) => {
     const res = await fetch("/api/pins/allPins")
     if (res.ok){
         const data = await res.json()
-        dispatch(getPins(data))
+        console.log('THUNK GET ALL PINS', data)
+        dispatch(getPins(data.Pins))
         return data
     }
     else{
