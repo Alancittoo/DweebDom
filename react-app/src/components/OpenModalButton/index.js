@@ -1,6 +1,7 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
 
+// Use this instead and customize it for pins for modal
 function OpenModalButton({
   modalComponent, // component to render inside the modal
   buttonText, // text of the button that opens the modal

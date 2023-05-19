@@ -10,7 +10,9 @@ function HomePage() {
     const userId = useSelector(state => state.session.user.id)
     const [profileMenu, setProfileMenu] = useState(false);
     const [currId, setCurrId] = useState(null);
-    console.log('TEST', Object.values(useSelector(state => state.pins)))
+    // console.log('TEST', Object.values(useSelector(state => state.pins)))
+    console.log('SESSIOn', useSelector(state => state))
+
     const pins = Object.values(useSelector(state => state.pins.pins))
 
     useEffect( () => {
@@ -26,8 +28,9 @@ function HomePage() {
                         <NavLink to={`/pins/${pin.id}`}>
                             <img classname='HomePage-pin-image' src={pin.image_url} alt={pin.title} />
                         </NavLink>
-                        <h3 className="HomePage-pin-title">{pin.title}</h3>
-                        <p className="HomePage-pin-desc">{pin.description}</p>
+
+                        {/* <h3 className="HomePage-pin-title">{pin.title}</h3>
+                        <p className="HomePage-pin-desc">{pin.description}</p> */}
                     </div>
                 ))}
             </div>

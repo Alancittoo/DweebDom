@@ -28,16 +28,19 @@ def create_pin():
 
     if form.validate_on_submit():
         # data = request.get_json()
+        print("Received Form Data:", form.data)
         new_pin = Pin(
             image_url = form.data['image_url'],
             title = form.data['title'],
             description = form.data['description'],
             user_id = user.id
         )
+        print("it worked",new_pin)
         db.session.add(new_pin)
         db.session.commit()
         return new_pin.to_dict(), 201
     if form.errors:
+        print ("HELP", form.errors)
         return form.errors
 
 

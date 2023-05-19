@@ -23,9 +23,9 @@ export const createPin = (pin) => ({
 })
 
 
-export const updatePin = (pin_id) => ({
+export const updatePin = (pin) => ({
     type: UPDATE_PIN,
-    pin_id
+    pin
 })
 
 
@@ -68,11 +68,14 @@ export const thunkGetSinglePin = (pin_id) => async(dispatch) => {
 export const thunkCreatePin = (pin) => async(dispatch) => {
     const res = await fetch(`/api/pins/newPin`,{
         method: "POST",
-        body: pin
+        headers: {
+            "Content-Type": "application/json",
+          },
+        body: JSON.stringify(pin)
     })
     if (res.ok){
         const data = await res.json()
-        dispatch(createPin(pin))
+        dispatch(createPin(data))
         return data
     }
     else{
@@ -92,6 +95,7 @@ export const thunkUpdatePin = (pin, pin_id) => async(dispatch) => {
     })
     if (res.ok){
         const data = await res.json()
+        dispatch(updatePin(data))
         return data
     }
     else {
@@ -126,33 +130,28 @@ const initialState = {
 
   const pinReducer = (state = initialState, action) => {
     let newState;
-    switch(action.type) {
+    switch (action.type) {
       case GET_PINS:
-        newState = { ...state };
+        newState = { ...state, pins: {} };
         action.pins.forEach(pin => {
           newState.pins[pin.id] = pin;
         });
         return newState;
       case GET_SINGLE_PIN:
-        newState = { ...state };
-        newState.currentPin = newState.pins[action.pin_id];
+        newState = { ...state, currentPin: state.pins[action.pin_id] };
         return newState;
-      case CREATE_PIN:
-        newState = { ...state, pins: {...state.pins}};
-        newState.pins[action.pin.id] = action.pin;
-        return newState;
-      case UPDATE_PIN:
-        newState = { ...state, pins: {...state.pins}};
-        newState.pins[action.pin.id] = action.pin;
-        return newState;
+    //   case UPDATE_PIN:
+    //     newState = { ...state, pins: { ...state.pins } };
+    //     newState.pins[action.pin.id] = action.pin;
+    //     return newState;
       case DELETE_PIN:
-        newState = { ...state, pins: {...state.pins}};
+        newState = { ...state, pins: { ...state.pins } };
         delete newState.pins[action.pin_id];
         return newState;
       default:
         return state;
     }
-  }
+  };
 
 
 export default pinReducer

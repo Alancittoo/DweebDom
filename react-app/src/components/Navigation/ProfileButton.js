@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { NavLink } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const currentUser = useSelector(state => state.session.user);
+
 
   const openMenu = () => {
     if (showMenu) return;
@@ -47,6 +50,8 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
+            <NavLink to={`/pins/newPin`}><button>Create A New Pin !</button></NavLink>
+            <NavLink to={`/boards/${currentUser}`}><button>Checkout Your Boards !</button></NavLink>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

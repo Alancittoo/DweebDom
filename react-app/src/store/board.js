@@ -132,12 +132,7 @@ const boardReducer = (state = initialState, action) => {
         case GET_SINGLE_BOARD:
             newState = { ...state, currentBoard: {...state.allBoards[action.board_id]} };
             return newState;
-        case CREATE_BOARD:
-            newState = { ...state, allBoards: {...state.allBoards, [action.board.id]: action.board} };
-            return newState;
-        case UPDATE_BOARD:
-            newState = { ...state, allBoards: {...state.allBoards, [action.board.id]: action.board} };
-            return newState;
+
         case DELETE_BOARD:
             newState = { ...state, allBoards: {...state.allBoards} };
             delete newState.allBoards[action.board_id];
