@@ -23,7 +23,6 @@ function App() {
       {isLoaded && (
         <Switch>
 
-          <Route path='/' />
 
 
           <Route path='/home' component={HomePage}>
@@ -52,6 +51,7 @@ function App() {
             <SignupFormPage />
           </Route>
 
+          <Route exactpath='/' />
 
 
         </Switch>

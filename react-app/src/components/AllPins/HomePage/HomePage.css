@@ -1,31 +1,34 @@
 .HomePage-image-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-rows: minmax(100px, auto);
-    gap: 1em;
-    padding: 1em;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
+  gap: 1em;
+  padding: 1em;
+}
 
-  .HomePage-pin-container {
-    overflow: hidden;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-    cursor: pointer;
-    border-radius: 16px;
-    transition: all 0.2s ease-in-out;
-  }
+.HomePage-pin-container {
+  overflow: hidden;
+  box-shadow: 0 1px 2px black;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+  height: 200px;
+  object-fit: contain
+}
 
-  .HomePage-pin-container:hover {
-    transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  }
+.HomePage-pin-container:hover {
+  transform: scale(1.00);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
-  .HomePage-pin-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+.HomePage-pin-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain
+}
 
-  .HomePage-pin-title {
-    padding: 0.5em;
-    font-size: 0.9em;
-  }
+.HomePage-pin-title {
+  padding: 0.5em;
+  font-size: 0.9em;
+}
