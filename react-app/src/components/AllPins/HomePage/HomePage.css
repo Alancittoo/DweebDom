@@ -6,6 +6,7 @@
   padding: 1em;
 }
 
+
 .HomePage-pin-container {
   overflow: hidden;
   box-shadow: 0 1px 2px black;
@@ -13,22 +14,29 @@
   border-radius: 16px;
   transition: all 0.2s ease-in-out;
   height: 200px;
-  object-fit: contain
 }
+
 
 .HomePage-pin-container:hover {
   transform: scale(1.00);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.HomePage-pin-image {
+.HomePage-pin-image img{
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: contain
+  object-fit: cover
 }
 
 .HomePage-pin-title {
   padding: 0.5em;
   font-size: 0.9em;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display:inline;
+  object-fit:contain; /*  */
 }

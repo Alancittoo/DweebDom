@@ -14,8 +14,8 @@ class Pin(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     pin_users_relationship = db.relationship('User', back_populates='user_pins_relationship') #done
-    pin_comments_relationship = db.relationship('Comment', back_populates='comment_pins_relationship')#done
-    pin_likes_relationship = db.relationship('Like', back_populates='like_pins_relationship')#done
+    pin_comments_relationship = db.relationship('Comment', back_populates='comment_pins_relationship',  cascade='delete')#done
+    pin_likes_relationship = db.relationship('Like', back_populates='like_pins_relationship',  cascade='delete')#done
 
     #ASSOCIATION
     pin_boards_association = db.relationship('Board',

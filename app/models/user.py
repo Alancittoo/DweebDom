@@ -19,10 +19,10 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(50), nullable=False)
 
     # Regular relationships, gotta do the other models first
-    user_boards_relationship = db.relationship('Board', back_populates='board_users_relationship') #done
-    user_pins_relationship = db.relationship('Pin', back_populates='pin_users_relationship') #done
-    user_comments_relationship = db.relationship('Comment', back_populates='comment_users_relationship') #done
-    user_likes_relationship = db.relationship('Like', back_populates='like_users_relationship') #done
+    user_boards_relationship = db.relationship('Board', back_populates='board_users_relationship',  cascade='delete') #done
+    user_pins_relationship = db.relationship('Pin', back_populates='pin_users_relationship',  cascade='delete') #done
+    user_comments_relationship = db.relationship('Comment', back_populates='comment_users_relationship',  cascade='delete') #done
+    user_likes_relationship = db.relationship('Like', back_populates='like_users_relationship',  cascade='delete') #done
 
     # Asscociation
     # followed = db.relationship(

@@ -9,6 +9,7 @@ import HomePage from "./components/AllPins/HomePage";
 import NewPin from "./components/CreatePin";
 import SinglePin from "./SinglePin";
 import AllBoards from "./components/AllBoards";
+import SingleBoard from "./components/SingleBoard";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,9 +38,15 @@ function App() {
             <SinglePin />
           </Route>
 
+          <Route path='/boards/single/:boardId' component={SingleBoard}>
+            <SingleBoard />
+          </Route>
+
           <Route path='/boards/:userId' component={AllBoards}>
             <AllBoards />
           </Route>
+
+
 
           <Route path="/login" >
             <LoginFormPage />

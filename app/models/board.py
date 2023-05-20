@@ -26,7 +26,8 @@ class Board(db.Model):
             'title': self.title,
             'description': self.description,
             'is_public': self.is_public,
-            'user_id': self.user_id
+            'user_id': self.user_id,
+            'pins': [pin.to_dict() for pin in self.board_pins_association]
         }
 
     def to_dict_no_item(self):

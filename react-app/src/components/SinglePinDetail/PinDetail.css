@@ -1,0 +1,21 @@
+.PinDetail {
+    display: flex;
+    width: 80%;
+    height: 80%;
+  }
+
+  .PinDetail-image {
+    width: 240px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .PinDetail-text {
+    padding: 2em;
+    width: 50%;
+  }
+
+  .PinDetail-title {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }

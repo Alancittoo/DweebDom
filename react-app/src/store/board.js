@@ -37,11 +37,13 @@ export const deleteBoard = (board_id) => ({
 ////////////////////////                               THUNKS                   ////////////////////////////////////////////////
 
 export const thunkGetBoards = (user_id) => async (dispatch) => {
-    const res = await fetch(`/api/boards/${user_id}`)
+    const res = await fetch(`/api/boards/allBoards/${user_id}`)
     if (res.ok){
         const data = await res.json()
-        dispatch(getBoards(user_id))
-        return data
+        const boardsArray = Array.isArray(data) ? data : [data] // make sure Array for comp to work
+        console.log('BOARDSARRAY ',boardsArray)
+        dispatch(getBoards(boardsArray))
+        return boardsArray
     }
     else {
         console.log("GET BOARDS THUNK FAILED", res)
@@ -50,11 +52,12 @@ export const thunkGetBoards = (user_id) => async (dispatch) => {
 }
 
 
-export const thunkGetSingleBoard = (user_id, board_id) => async (dispatch) => {
+export const thunkGetSingleBoard = (board_id) => async (dispatch) => {
     const res = await fetch(`/api/boards/${board_id}`)
     if (res.ok){
         const data = await res.json()
-        dispatch(getSingleBoard(board_id))
+        console.log('SINGLEBOARDTHUNK', data)
+        dispatch(getSingleBoard(data))
         return data
     }
     else {
@@ -127,10 +130,11 @@ const boardReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_BOARDS:
-            newState = { ...state, allBoards: {...action.boards} };
+            newState = { ...state, allBoards: [...action.boards] };
             return newState;
         case GET_SINGLE_BOARD:
-            newState = { ...state, currentBoard: {...state.allBoards[action.board_id]} };
+            newState = { ...state, currentBoard: {...state, currentBoard: {...action.board_id}} };
+            console.log('SINGLEBOARDREDUCER',newState)
             return newState;
 
         case DELETE_BOARD:
