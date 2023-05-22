@@ -41,7 +41,7 @@ export const thunkGetBoards = (user_id) => async (dispatch) => {
     if (res.ok){
         const data = await res.json()
         const boardsArray = Array.isArray(data) ? data : [data] // make sure Array for comp to work
-        console.log('BOARDSARRAY ',boardsArray)
+        console.log('BOARDSARRAY IN THUNK',boardsArray)
         dispatch(getBoards(boardsArray))
         return boardsArray
     }
@@ -113,6 +113,34 @@ export const thunkDeleteBoard = (board_id) => async (dispatch) => {
     }
     else {
         console.log("DELETE BOARD THUNK FAILED", res)
+        return false
+    }
+}
+
+export const thunkAddPinToBoard = (board_id, pin_id) => async (dispatch) => {
+    const res = await fetch (`/api/boards/${board_id}/pins/${pin_id}`, {
+        method: 'POST'
+    })
+    if (res.ok){
+        const data = await res.json()
+        dispatch(getSingleBoard(data))
+        return data
+    } else {
+        console.log("ADD PIN TO BOARD THUNK FAILED", res)
+        return false
+    }
+}
+
+export const thunkDeletePinFromBoard = (board_id, pin_id) => async (dispatch) => {
+    const res = await fetch (`/api/boards/${board_id}/pins/${pin_id}`, {
+        method: 'DELETE'
+    })
+    if (res.ok){
+        const data = await res.json()
+        dispatch(getSingleBoard(data))
+        return data
+    } else {
+        console.log("DELETE PIN FROM BOARD THUNK FAILED", res)
         return false
     }
 }

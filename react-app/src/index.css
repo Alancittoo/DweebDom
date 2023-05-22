@@ -1,4 +1,10 @@
 /* TODO Add site wide styles */
 html {
-    /* background: url("https://i.pinimg.com/236x/b6/78/0a/b6780a0077b24b5c12d2a5aed4666b0b.jpg")repeat */
+    background:
+        /* linear-gradient(
+            to bottom,
+            rgba(61, 5, 5, 0.3),
+            rgba(255, 255, 255, 0.3)
+        ), */
+        url("https://wallpaperaccess.com/full/626893.jpg") ;
 }

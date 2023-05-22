@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { thunkCreatePin } from "../../store/pin";
 import { authenticate } from "../../store/session";
 import LoginFormModal from "../LoginFormModal";
+import './CreatePin.css'
 
 function NewPin() {
     const [title, setTitle] = useState("")

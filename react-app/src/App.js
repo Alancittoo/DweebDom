@@ -10,6 +10,7 @@ import NewPin from "./components/CreatePin";
 import SinglePin from "./SinglePin";
 import AllBoards from "./components/AllBoards";
 import SingleBoard from "./components/SingleBoard";
+import SplashPage from "./SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route exactpath='/' />
+          <Route exactpath='/' component={SplashPage}/>
 
 
         </Switch>

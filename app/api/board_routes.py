@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Board, board_pins, db
+from app.models import User, Board, board_pins, db, Pin
 from ..forms.board_form import BoardForm
 
 board_routes = Blueprint('boards', __name__)
@@ -83,3 +83,33 @@ def delete_board(board_id):
     db.session.delete(board)
     db.session.commit()
     return {'message': "BOARD DELETED"}, 200
+
+@board_routes.route('/<int:board_id>/pins/<int:pin_id>', methods=['POST'])
+@login_required
+def adding_pin(board_id, pin_id):
+    board = Board.query.get(board_id)
+    if not board or board.user_id != current_user.id:
+        return {"error": "NOT ALLOWED"}
+
+    pin = Pin.query.get(pin_id)
+    if not pin:
+        return {"error": "CANNOT FIND PIN"}
+
+    board.board_pins_association.append(pin)
+    db.session.commit()
+    return board.to_dict()
+
+@board_routes.route('/<int:board_id>/pins/<int:pin_id>', methods=['DELETE'])
+@login_required
+def deleting_pin(board_id, pin_id):
+    board = Board.query.get(board_id)
+    if not board or board.user_id != current_user.id:
+        return {"error": "NOT ALLOWED"}
+
+    pin = Pin.query.get(pin_id)
+    if not pin:
+        return {"error": "CANNOT FIND PIN"}
+
+    board.board_pins_association.remove(pin)
+    db.session.commit()
+    return board.to_dict()
