@@ -8,4 +8,4 @@ const animeImages = [
     "https://i.pinimg.com/236x/88/f0/6f/88f06f8393d32f9404be3e212a70f161.jpg",
   ];
 
-  export { animeImages};
+  export { animeImages };

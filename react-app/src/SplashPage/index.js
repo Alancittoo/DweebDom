@@ -2,7 +2,7 @@ import { animeImages} from './images';
 import './SplashPage.css';
 
 function SplashPage() {
-
+    //NEED TO ADD MORE, LOOK INTO KEYFRAMES
     const mainText = ['anime binge idea'];
     const imageArray = [
         animeImages,
@@ -10,17 +10,18 @@ function SplashPage() {
 
     return (
         <>
-            <div className="SplashPage-Find-Your-text">
+            <div className="SplashPage-static">
                 <h1>
                     Get your next
                 </h1>
             </div>
             <div className='Splashpage-secondary-text'>
-                    <h1>
+                    <h2>
+                        {/* NEEDS TO ROTATE LIKE PINTEREST */}
                         {mainText[0]}
-                    </h1>
+                    </h2>
             </div>
-            <div className="SP-images">
+            <div className="Splashpage-image-container">
                 {imageArray.map((urls, i) => (
                     <div key={i}>
                         {urls.map((url, j) => (
