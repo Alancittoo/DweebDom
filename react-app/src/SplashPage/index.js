@@ -28,6 +28,7 @@ function SplashPage() {
                             <img
                                 src={url}
                                 className='splashpage-images'
+                                style={{borderRadius: '10px'}}
                             />
                         ))}
                     </div>

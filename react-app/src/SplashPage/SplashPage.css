@@ -24,6 +24,8 @@
 
   .splashpage-images {
     height: 300px;
+    object-fit: cover;
     width: 200px;
+    margin: 10px;
     /* border-radius: 20px; */
   }
