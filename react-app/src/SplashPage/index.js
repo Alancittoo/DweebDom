@@ -1,5 +1,3 @@
-import React, { useRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { animeImages} from './images';
 import './SplashPage.css';
 
@@ -29,8 +27,6 @@ function SplashPage() {
                             <img
                                 src={url}
                                 className='splashpage-images'
-                                alt={`images${i}`}
-                                id={`images${j + 1}`}
                             />
                         ))}
                     </div>
