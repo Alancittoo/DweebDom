@@ -11,6 +11,7 @@ function SingleBoard() {
   const history = useHistory();
   const currentBoard = useSelector((state) => state.boards.currentBoard.currentBoard);
   const currentUser = useSelector(state => state.session.user);
+  const [errors, setErrors] = useState([])
 
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState("");
@@ -46,6 +47,9 @@ function SingleBoard() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let newErrors = []
+
+    
     const board = { title, description }
     await dispatch(thunkUpdateBoard(board, boardId));
     setIsEditing(false);

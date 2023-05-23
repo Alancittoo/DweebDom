@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetBoards, thunkCreateBoard } from '../../store/board';
 import { NavLink } from 'react-router-dom';
+import './AllBoards.css'
 
 function AllBoards() {
     const dispatch = useDispatch()
@@ -11,6 +12,8 @@ function AllBoards() {
     const [boardTitle, setBoardTitle] = useState("")
     const [boardDescription, setBoardDescription] = useState("")
     const [showForm, setShowForm] = useState(false)
+    const [errors, setErrors] = useState([]);
+
     // console.log(boards)
     useEffect(() => {
         dispatch(thunkGetBoards(currentUser.id));
@@ -19,6 +22,14 @@ function AllBoards() {
 
     const handleCreateBoard = async (e) => {
         e.preventDefault();
+        let newErrors = []
+
+        if (boardTitle === "") newErrors.push('title cannot be empty')
+        if (newErrors.length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+
         const board = new FormData();
         board.append("title", boardTitle);
         board.append("description", boardDescription);
@@ -42,21 +53,25 @@ function AllBoards() {
                 </NavLink>
                 </div>
             ))}
-            <button onClick={() => setShowForm(!showForm)}>Create New Board</button>
+            <button className='Create-new-board-button' onClick={() => setShowForm(!showForm)}>Create New Board</button>
             {showForm && (   // Show form only if showForm is true
-                <form onSubmit={handleCreateBoard}>
+                <form className='Create-board-form' onSubmit={handleCreateBoard}>
                     <input
                         type="text"
                         value={boardTitle}
                         onChange={(e) => setBoardTitle(e.target.value)}
                         placeholder="Enter Board Title"
                     />
+                    {errors.boardTitle}
                     <textarea
                         value={boardDescription}
                         onChange={(e) => setBoardDescription(e.target.value)}
                         placeholder="Enter Board Description"
                     />
-                    <button type="submit">Create Board</button>
+                    <button className='Create-new-board-button'type="submit">Create Board</button>
+                    {errors.map((error) => (
+                                    <div style={{ color: 'red' }}>{error}</div>
+                                ))}
                 </form>
             )}
         </div>

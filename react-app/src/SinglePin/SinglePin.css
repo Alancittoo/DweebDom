@@ -1,32 +1,70 @@
 .SinglePin-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  .SinglePin-content {
-    background-color: #fff;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  }
+.SinglePin-content {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 30px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
 
-  .SinglePin-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-    margin-bottom: 16px;
-  }
+.SinglePin-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
 
-  .SinglePin-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
+.SinglePin-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
 
-  .SinglePin-description {
-    font-size: 16px;
-    color: #666;
-  }
+.SinglePin-description {
+  font-size: 16px;
+  color: #666;
+}
+
+.SinglePin-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.SinglePin-form label {
+  margin: 10px 0;
+}
+
+.SinglePin-form input {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ada8a888;
+  width: 100%;
+  padding-right: 1px;
+}
+
+.SinglePin-form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: rgb(204, 176, 209);
+  color: white;
+  border: 1px solid #ada8a888;
+  border-radius: 5px;
+  width: 102%;
+  cursor: pointer;
+  transition: background-color 1s ease;
+}
+
+.SinglePin-form button:hover {
+  background-color: rgb(200, 120, 219);
+  color: black;
+  border: 1px solid black;
+}
+

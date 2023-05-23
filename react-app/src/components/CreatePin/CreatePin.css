@@ -1,3 +1,52 @@
 .Create-pin-image-placeholder {
-    width: 300px
+    width: 300px;
+    border-radius: 7px;
+}
+
+.Create-pin-submit-button{
+  border-radius: 5px;
+  border: 1px solid #ada8a888;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: rgb(204, 176, 209);
+  color: white;
+  margin-top: 10px;
+  margin-left: 10PX;
+  transition: background-color 1s ease;
+
+}
+
+.Create-pin-submit-button:hover{
+    background-color: rgb(200, 120, 219);
+    color: black;
+    border: 1px solid black;
+}
+
+.Create-pin-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.Create-pin-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 600px;
+}
+
+.Create-pin-form input {
+    padding: 7px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+.create-pin-errors {
+    color: black;
+    margin-bottom: 10px;
 }

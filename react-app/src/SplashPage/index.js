@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 
 function SplashPage() {
     //NEED TO ADD MORE, LOOK INTO KEYFRAMES
-    const mainText = ['Big Anime Show !', 'Favorite Dog', 'Favorite New Meal'];
+    const mainText = ['Big Anime Show !', 'Favorite Dog Breed', 'Favorite New Meal'];
     const imageArrays = [
         animeImages,
         dogImages,
@@ -38,7 +38,7 @@ function SplashPage() {
                 </h1>
             </div>
             <div className='Splashpage-secondary-text'>
-                <h2 className="animated-text">
+                <h2 className="secondary-text">
                     {mainText[currentTextIndex]}
                 </h2>
             </div>

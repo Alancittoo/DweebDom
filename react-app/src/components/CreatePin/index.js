@@ -92,7 +92,7 @@ function NewPin() {
                 </label>
                 <hr/>
                 <div>
-                    <button>Create My Pin !</button>
+                    <button  className='Create-pin-submit-button' >Create My Pin 🎉</button>
                 </div>
             </form>
         </div>

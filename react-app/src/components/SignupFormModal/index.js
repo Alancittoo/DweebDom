@@ -17,6 +17,18 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		let newErrors = [];
+		const emailRegEx = /\S+@\S+\.\S+/;
+		if (!emailRegEx.test(email)) {
+			newErrors.push('Please provide a valid email.');
+		}
+		if (password !== confirmPassword) {
+			newErrors.push("Confirm Password field must be the same as the Password field");
+		}
+		if (newErrors.length > 0) {
+			setErrors(newErrors);
+			return;
+		}
 		if (password === confirmPassword) {
 			console.log({
 				username,
