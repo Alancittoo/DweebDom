@@ -18,7 +18,14 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password));
+			console.log({
+				username,
+				email,
+				password,
+				first_name: fname,
+				last_name: lname
+			})
+			const data = await dispatch(signUp(username, email, password, fname, lname));
 			if (data) {
 				setErrors(data);
 			} else {
@@ -70,7 +77,7 @@ function SignupFormModal() {
 				<label>
 					Last Name
 					<input
-						type="fname"
+						type="lname"
 						value={lname}
 						onChange={(e) => setLName(e.target.value)}
 						required

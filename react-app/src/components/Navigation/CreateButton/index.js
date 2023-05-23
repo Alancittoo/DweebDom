@@ -37,7 +37,7 @@ function CreateButton() {
             <NavLink to="/pins/newPin">Create Pin</NavLink>
           </li>
           <li style={{listStyle:'none'}}>
-            <NavLink to="/boards/newBoard">Create Board</NavLink>
+            <NavLink to="/boards/newBoard">Look at Your Boards</NavLink>
           </li>
         </ul>
       </>

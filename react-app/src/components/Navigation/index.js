@@ -25,7 +25,6 @@ function Navigation({ isLoaded }) {
 						<NavLink to="/home" onClick={handleHomeClick}>Home</NavLink>
 						<div className="create-button-container">
 							<CreateButton />
-
 						</div>
 					</>
 				}

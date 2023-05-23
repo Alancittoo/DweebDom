@@ -67,7 +67,7 @@ export const logout = () => async (dispatch) => {
 	}
 };
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (username, email, password, fname, lname) => async (dispatch) => {
 	const response = await fetch("/api/auth/signup", {
 		method: "POST",
 		headers: {
@@ -77,19 +77,42 @@ export const signUp = (username, email, password) => async (dispatch) => {
 			username,
 			email,
 			password,
+			first_name: fname,
+			last_name: lname
 		}),
 	});
 
 	if (response.ok) {
+		console.log('IT WORKED', {
+			username,
+			email,
+			password,
+			first_name: fname,
+			last_name: lname
+		})
 		const data = await response.json();
 		dispatch(setUser(data));
 		return null;
 	} else if (response.status < 500) {
+		console.log('not WORKED', {
+			username,
+			email,
+			password,
+			first_name: fname,
+			last_name: lname
+		})
 		const data = await response.json();
 		if (data.errors) {
 			return data.errors;
 		}
 	} else {
+		console.log('DID NOT WORKED', {
+			username,
+			email,
+			password,
+			first_name: fname,
+			last_name: lname
+		})
 		return ["An error occurred. Please try again."];
 	}
 };

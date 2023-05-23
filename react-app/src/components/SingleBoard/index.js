@@ -77,7 +77,7 @@ function SingleBoard() {
           <button type="submit">Submit</button>
         </form>
       ) : (
-        <>
+        <div className='board-info'>
           <h1>{currentBoard.title}</h1>
           <p>{currentBoard.description}</p>
           {currentUser.id === currentBoard.user_id && (
@@ -86,7 +86,7 @@ function SingleBoard() {
               <button onClick={() => setIsEditing(true)}>Update</button>
             </>
           )}
-        </>
+        </div>
       )}
       <div className="SingleBoard-image-container">
         {currentBoard.pins.map((pin) => (
@@ -95,7 +95,7 @@ function SingleBoard() {
               <img className='SingleBoard-pin-image' src={pin.image_url} alt={pin.title} />
             </NavLink>
             {currentUser.id == currentBoard.user_id && (
-              <button className='DeletePinFromBoardButton' onClick={() => handleDeletePinFromBoard(pin.id)}>Remove Pin from Board</button>
+              <p className='DeletePinFromBoardButton' onClick={() => handleDeletePinFromBoard(pin.id)}><i class="fa-solid fa-trash-can"></i></p>
             )}
           </div>
 
