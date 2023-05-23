@@ -21,6 +21,7 @@ function SinglePin() {
     const [imageUrl, setImageUrl] = useState("")
     const [selectedBoardId, setSelectedBoardId] = useState(null)
     const [errors, setErrors] = useState([]);
+    const [isAdded, setIsAdded] = useState(false)
     // console.log(useSelector(state => state))
 
     useEffect(() => {
@@ -56,8 +57,11 @@ function SinglePin() {
         const res = await dispatch(thunkAddPinToBoard(selectedBoardId, pinId))
         if (res) {
             console.log('Pin added to board!')
+            setIsAdded(true)
         } else {
             console.log('Failed add pin to boar')
+            setIsAdded(false)
+
         }
     }
 
@@ -107,6 +111,8 @@ function SinglePin() {
                             </select>
                         </label>
                         <button style={{ border: 'none', cursor: 'pointer', marginLeft: '15px' }} type="submit">+</button>
+            {isAdded && <div>Pin added to board!</div>}
+
                     </form>
                     {currentUser.id === pins[pinId].user_id && (
                         <>
