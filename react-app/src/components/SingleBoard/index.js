@@ -49,9 +49,19 @@ function SingleBoard() {
     e.preventDefault();
     let newErrors = []
 
-    
+    if (title === "") newErrors.push('title cannot be empty')
+    if (newErrors.length > 0) {
+      setErrors(newErrors);
+      return;
+  }
+
     const board = { title, description }
-    await dispatch(thunkUpdateBoard(board, boardId));
+    const res = await dispatch(thunkUpdateBoard(board, boardId));
+
+    if (res){
+      setErrors([])
+    }
+
     setIsEditing(false);
     history.push(`/boards/${boardId}`)
   }
@@ -64,11 +74,12 @@ function SingleBoard() {
     <div className="SingleBoard-container">
       {isEditing ? (
         <form onSubmit={handleSubmit}>
-          <label>
+          <label style={{marginRight: '15px', marginLeft:'10px'}}>
             Title:
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              style={{margin:'5px', marginTop: '35px', marginLeft:'10px'}}
             />
           </label>
           <label>
@@ -76,9 +87,13 @@ function SingleBoard() {
             <input
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              style={{margin:'5px', marginTop: '35px', marginLeft:'10px'}}
             />
           </label>
-          <button type="submit">Submit</button>
+          <button className='Update-board-button' type="submit">Submit</button>
+          {errors.map((error, idx) => (
+                  <div style={{ color: 'red' }}>{error}</div>
+                ))}
         </form>
       ) : (
         <div className='board-info'>

@@ -54,3 +54,22 @@
   background-color: rgb(230, 217, 233);
 
 }
+
+.Update-board-button{
+  width: 30%;
+  border-radius: 5px;
+  border: 1px solid #ada8a888;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: rgb(204, 176, 209);
+  color: white;
+  margin-top: 10px;
+  margin-left: 10PX;
+  transition: background-color 1s ease;
+}
+
+.Update-board-button:hover{
+  background-color: rgb(200, 120, 219);
+  color: black;
+  border: 1px solid black;
+}
