@@ -24,11 +24,18 @@ function LoginFormModal() {
     }
   };
 
+  const demoUser = async (e) => {
+    e.preventDefault()
+    await dispatch(login('demo@aa.io', 'password'))
+    setEmail('demo@aa.io')
+    setPassword('password')
+  }
+
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
+    <div className="login-modal">
+      <h1 className="login-top-text">Log In to Dweebdom 🤓</h1>
+      <form className='login-form' onSubmit={handleSubmit}>
+        <ul className="errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
@@ -37,6 +44,7 @@ function LoginFormModal() {
           Email
           <input
             type="text"
+            className="login-form-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -46,14 +54,17 @@ function LoginFormModal() {
           Password
           <input
             type="password"
+            className="login-form-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className='login-button' type="submit">Log In</button>
       </form>
-    </>
+      <h3 style={{marginLeft: '165px'}}> or </h3>
+      <button className="DemoUser" onClick={(e) => demoUser(e)}>Try A Demo User</button>
+    </div>
   );
 }
 

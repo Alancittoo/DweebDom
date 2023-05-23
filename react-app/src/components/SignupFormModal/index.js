@@ -10,6 +10,8 @@ function SignupFormModal() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
+	const [fname, setFName] = useState("")
+	const [lname, setLName] = useState("")
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
@@ -24,7 +26,7 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors([
-				"Confirm Password field must be the same as the Password field",
+				"Confirm Password field must be the same as the Password field1",
 			]);
 		}
 	};
@@ -57,6 +59,24 @@ function SignupFormModal() {
 					/>
 				</label>
 				<label>
+					First Name
+					<input
+						type="fname"
+						value={fname}
+						onChange={(e) => setFName(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Last Name
+					<input
+						type="fname"
+						value={lname}
+						onChange={(e) => setLName(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
 					Password
 					<input
 						type="password"
@@ -74,6 +94,7 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+
 				<button type="submit">Sign Up</button>
 			</form>
 		</>

@@ -3,7 +3,7 @@ import './SplashPage.css';
 
 function SplashPage() {
     //NEED TO ADD MORE, LOOK INTO KEYFRAMES
-    const mainText = ['anime binge idea'];
+    const mainText = ['Big Anime Show !'];
     const imageArray = [
         animeImages,
     ];
@@ -24,10 +24,12 @@ function SplashPage() {
             <div className="Splashpage-image-container">
                 {imageArray.map((urls, i) => (
                     <div key={i}>
-                        {urls.map((url, j) => (
+                        {urls.map((url) => (
                             <img
                                 src={url}
-                                className='splashpage-images'
+                                alt={`anime-${i}`}
+                                className={`splashpage-images`}
+                                // className={`splashpage-images-img-${i+1}`}
                                 style={{borderRadius: '10px'}}
                             />
                         ))}

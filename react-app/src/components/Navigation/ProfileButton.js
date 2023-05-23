@@ -48,9 +48,6 @@ function ProfileButton({ user }) {
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
-      <NavLink to={'/home'}>
-      <img style={{width: '22px'}} src='https://media.istockphoto.com/id/1333688503/vector/nerd-geek-boy-icon-design-template-illustration.jpg?s=612x612&w=0&k=20&c=RrQssmQmkerQxu_Nn6w9xAJ5SfGnBggKTOMgCg-jqxQ=' />
-      </NavLink>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>

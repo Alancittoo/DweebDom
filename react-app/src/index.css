@@ -8,3 +8,8 @@ html {
         ), */
         url("https://wallpaperaccess.com/full/626893.jpg") ;
 }
+
+
+a {
+    text-decoration: none;
+  }

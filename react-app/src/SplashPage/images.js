@@ -1,3 +1,5 @@
+// Add more array for future so it cycles through, *KEYFRAMES *
+
 const animeImages = [
     "https://i.pinimg.com/236x/27/09/60/27096072d96f2487c5978e033fe252f4.jpg",
     "https://i.pinimg.com/236x/32/b9/c4/32b9c49796354b2789fdb2afba2d58b0.jpg",

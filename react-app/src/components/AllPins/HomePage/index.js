@@ -28,7 +28,7 @@ function HomePage() {
                 {pins.map(pin => (
                     <div key={pin.pinId} className="HomePage-pin-container">
                         <NavLink to={`/pins/${pin.id}`}>
-                            <img classname='HomePage-pin-image' src={pin.image_url} alt={pin.title} />
+                            <img className='HomePage-pin-image' src={pin.image_url} alt={pin.title} />
                             <PinImage pin={pin} />
                         </NavLink>
 

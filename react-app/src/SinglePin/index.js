@@ -71,8 +71,8 @@ function SinglePin () {
     return (
         <div className="SinglePin-container">
             {pins && (
-                <div className="SinglePin-content">
-                    <img className="SinglePin-image" src={pins[pinId].image_url} alt={pins[pinId].title} />
+                <div className="SinglePin-content" style={{width:'30%'}}>
+                    <img className="SinglePin-image"  src={pins[pinId].image_url} alt={pins[pinId].title} />
                     <h1 className="SinglePin-title">{pins[pinId].title}</h1>
                     <p className="SinglePin-description">{pins[pinId].description}</p>
                     {currentUser.id === pins[pinId].user_id && (
@@ -80,7 +80,7 @@ function SinglePin () {
                             <button onClick={handleDelete}>Delete</button>
                             <button onClick={() => setIsEditing(true)}>Update</button>
                             {isEditing && (
-                                <form onSubmit={handleSubmit}>
+                                <form  onSubmit={handleSubmit}>
                                     <label>
                                         Title:
                                         <input

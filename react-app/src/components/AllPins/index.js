@@ -16,12 +16,12 @@ function PinImage({ pin }) {
 
   return (
     <>
-      <img
+      {/* <img
         className='HomePage-pin-image'
         src={pin.image_url}
         alt={pin.title}
         onClick={openModal}
-      />
+      /> */}
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <OpenModalPinDetail pin={pin} />

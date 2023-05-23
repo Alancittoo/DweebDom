@@ -95,7 +95,7 @@ function SingleBoard() {
               <img className='SingleBoard-pin-image' src={pin.image_url} alt={pin.title} />
             </NavLink>
             {currentUser.id == currentBoard.user_id && (
-              <button classname='DeletePinFromBoardButton' onClick={() => handleDeletePinFromBoard(pin.id)}>Remove Pin from Board</button>
+              <button className='DeletePinFromBoardButton' onClick={() => handleDeletePinFromBoard(pin.id)}>Remove Pin from Board</button>
             )}
           </div>
 
