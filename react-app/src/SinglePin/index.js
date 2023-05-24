@@ -20,7 +20,7 @@ function SinglePin() {
     const [description, setDescription] = useState("")
     const [imageUrl, setImageUrl] = useState("")
     const [selectedBoardId, setSelectedBoardId] = useState(null)
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState([])
     const [isAdded, setIsAdded] = useState(false)
     // console.log(useSelector(state => state))
 
@@ -72,8 +72,8 @@ function SinglePin() {
         if (title === "") newErrors.push("Title cannot be empty")
         if (imageUrl === "") newErrors.push("Image URL cannot be empty")
         if (newErrors.length > 0) {
-            setErrors(newErrors);
-            return;
+            setErrors(newErrors)
+            return
         }
 
         const pin = { title, description, image_url: imageUrl }

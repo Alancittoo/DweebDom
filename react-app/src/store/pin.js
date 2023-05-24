@@ -129,27 +129,27 @@ const initialState = {
   }
 
   const pinReducer = (state = initialState, action) => {
-    let newState;
+    let newState
     switch (action.type) {
       case GET_PINS:
-        newState = { ...state, pins: {} };
+        newState = { ...state, pins: {} }
         action.pins.forEach(pin => {
-          newState.pins[pin.id] = pin;
+          newState.pins[pin.id] = pin
         });
         return newState;
       case GET_SINGLE_PIN:
-        newState = { ...state, currentPin: state.pins[action.pin_id] };
-        return newState;
+        newState = { ...state, currentPin: state.pins[action.pin_id] }
+        return newState
       case UPDATE_PIN:
-        newState = { ...state, pins: { ...state.pins } };
-        newState.pins[action.pin.id] = action.pin;
-        return newState;
+        newState = { ...state, pins: { ...state.pins } }
+        newState.pins[action.pin.id] = action.pin
+        return newState
       case DELETE_PIN:
-        newState = { ...state, pins: { ...state.pins } };
-        delete newState.pins[action.pin_id];
-        return newState;
+        newState = { ...state, pins: { ...state.pins } }
+        delete newState.pins[action.pin_id]
+        return newState
       default:
-        return state;
+        return state
     }
   };
 
