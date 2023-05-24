@@ -83,7 +83,7 @@ function SinglePin() {
             setErrors([])
         }
         setIsEditing(false)
-        history.push(`/pins/${pinId}`)
+        // history.push(`/pins/${pinId}`)
     }
 
 

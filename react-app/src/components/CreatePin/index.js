@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { thunkCreatePin } from "../../store/pin";
+import { thunkCreatePin, thunkGetPins } from "../../store/pin";
 import { authenticate } from "../../store/session";
 import LoginFormModal from "../LoginFormModal";
 import './CreatePin.css'
@@ -33,7 +33,12 @@ function NewPin() {
             const newPin = await dispatch(thunkCreatePin(pin))
             console.log('New Pin:', newPin)
             dispatch(authenticate())
-            history.push(`/home`)
+            // dispatch(thunkGetPins)
+            if (newPin) {
+                history.push(`/pins/${newPin.id}`)  
+            } else {
+                console.log('WAiting didnt work')
+            }
         }
     }
 

@@ -140,10 +140,10 @@ const initialState = {
       case GET_SINGLE_PIN:
         newState = { ...state, currentPin: state.pins[action.pin_id] };
         return newState;
-    //   case UPDATE_PIN:
-    //     newState = { ...state, pins: { ...state.pins } };
-    //     newState.pins[action.pin.id] = action.pin;
-    //     return newState;
+      case UPDATE_PIN:
+        newState = { ...state, pins: { ...state.pins } };
+        newState.pins[action.pin.id] = action.pin;
+        return newState;
       case DELETE_PIN:
         newState = { ...state, pins: { ...state.pins } };
         delete newState.pins[action.pin_id];
