@@ -70,3 +70,9 @@
   color: black;
   border: 1px solid black;
 }
+
+.addToYourBoardButton:hover{
+  background-color: rgb(204, 176, 209);
+  color: black;
+  border: 1px solid black;
+}

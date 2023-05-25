@@ -23,6 +23,9 @@ function SinglePin() {
     const [errors, setErrors] = useState([])
     const [isAdded, setIsAdded] = useState(false)
     // console.log(useSelector(state => state))
+    const [boardSelected, setBoardSelected] = useState(false)
+    const [showMessage, setShowMessage] = useState(false)
+
 
     useEffect(() => {
         dispatch(thunkGetPins())
@@ -86,6 +89,13 @@ function SinglePin() {
         // history.push(`/pins/${pinId}`)
     }
 
+    const handleBoardValidClick = () => {
+        if (!boardSelected) {
+          setShowMessage(true)
+        } else {
+          setShowMessage(false)
+        }
+      };
 
 
     return (
@@ -110,9 +120,9 @@ function SinglePin() {
 
                             </select>
                         </label>
-                        <button style={{ border: 'none', cursor: 'pointer', marginLeft: '15px' }} type="submit">+</button>
-            {isAdded && <div>Pin added to board!</div>}
-
+                        <button className='addToYourBoardButton' onClick={handleBoardValidClick} style={{ border: '1px black solid', cursor: 'pointer', marginLeft: '15px', borderRadius:'10px' }} type="submit">+ Add to Your Board</button>
+                        {isAdded && <div>Pin added to board!</div>}
+                        {showMessage && <p>Please select a board! Or Create a new Board!</p>}
                     </form>
                     {currentUser.id === pins[pinId].user_id && (
                         <>
