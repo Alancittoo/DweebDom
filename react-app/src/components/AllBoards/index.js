@@ -16,7 +16,7 @@ function AllBoards() {
 
     // console.log(boards)
     useEffect(() => {
-        dispatch(thunkGetBoards(currentUser.id));
+        dispatch(thunkGetBoards(currentUser.id))
     }, [dispatch, currentUser.id]);
 
 
@@ -25,21 +25,22 @@ function AllBoards() {
         let newErrors = []
 
         if (boardTitle === "") newErrors.push('title cannot be empty')
+        if (boardTitle.length > 50) newErrors.push('title is WAY too long, think of something smaller')
         if (newErrors.length > 0) {
-            setErrors(newErrors);
+            setErrors(newErrors)
             return;
         }
 
-        const board = new FormData();
-        board.append("title", boardTitle);
-        board.append("description", boardDescription);
-        board.append("user_id", currentUser.id);
+        const board = new FormData()
+        board.append("title", boardTitle)
+        board.append("description", boardDescription)
+        board.append("user_id", currentUser.id)
 
-        await dispatch(thunkCreateBoard(board));
-        setBoardTitle("");
-        setBoardDescription("");
-        dispatch(thunkGetBoards(currentUser.id));
-        setShowForm(false);
+        await dispatch(thunkCreateBoard(board))
+        setBoardTitle("")
+        setBoardDescription("")
+        dispatch(thunkGetBoards(currentUser.id))
+        setShowForm(false)
     }
 
     // add VALIDATIONS LATER WORK ON FUNCTIONALITY NOW
@@ -54,7 +55,7 @@ function AllBoards() {
                 </div>
             ))}
             <button className='Create-new-board-button' onClick={() => setShowForm(!showForm)}>Create New Board</button>
-            {showForm && (   // Show form only if showForm is true
+            {showForm && (
                 <form className='Create-board-form' onSubmit={handleCreateBoard}>
                     <input
                         type="text"

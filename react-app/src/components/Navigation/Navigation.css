@@ -101,3 +101,47 @@
   background-color: rgb(218, 187, 224);
   cursor: pointer;
 }
+
+.fa-user-circle{
+  background-color: transparent;
+}
+
+.fa-user-circle:hover {
+  transition: 0.3s;
+  /* mix-blend-mode: color-burn; */
+  /* rotate: 7200deg; */
+  background-color: transparent;
+  scale: 1.7;
+  box-shadow: 0 0 10px white,
+  0 0 10px black,
+  0 0 20px black,
+  0 0 20px white;
+}
+
+.fa-github:hover{
+  transition: 0.6s;
+  scale: 2.2;
+  rotate: 720deg;
+  cursor: pointer;
+  /* box-shadow: 0 0 10px white,
+  0 0 10px black,
+  0 0 20px black,
+  0 0 20px white; */
+  background-color: transparent;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* .fa-user-circle, */
+.fa-github:hover{
+  animation: pulse 1s ease-in-out infinite;
+}

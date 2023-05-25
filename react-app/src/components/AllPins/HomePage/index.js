@@ -15,7 +15,7 @@ function HomePage() {
     // console.log('TEST', Object.values(useSelector(state => state.pins)))
     console.log('SESSIOn', useSelector(state => state))
 
-    const pins = Object.values(useSelector(state => state.pins.pins))
+    const pins = Object.values(useSelector(state => state.pins.pins)) || []
 
     useEffect(() => {
         dispatch(thunkGetPins())
@@ -28,23 +28,30 @@ function HomePage() {
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
     }
-    shufflePins(pins);
+    // const newest = pins[pins.length -5]
+    const newest = pins[pins.length - 1]
+    const otherPins = pins.length > 0 ? pins.slice(0, pins.length - 1) : []
+    // console.log('Newest', newest)
+    // const otherPins = pins.length > 0 ? pins.slice
+
+    shufflePins(otherPins);
 
     return (
         <div className="HomePage-container">
             <div className="HomePage-image-container">
-                {pins.map(pin => (
+                <div className="HomePage-pin-container">
+                    {/* <NavLink to={`/pins/${newest.id.in_}`}>
+                        <img className='HomePage-pin-image' src={newest.image_url} alt={newest.title} />
+                        <PinImage pin={newest} />
+                    </NavLink> */}
+                </div>
+                {otherPins.map(pin => (
                     <div key={pin.pinId} className="HomePage-pin-container">
                         <NavLink to={`/pins/${pin.id}`}>
                             <img className='HomePage-pin-image' src={pin.image_url} alt={pin.title} />
                             <PinImage pin={pin} />
                         </NavLink>
-
-                        {/* <h3 className="HomePage-pin-title">{pin.title}</h3>
-                        <p className="HomePage-pin-desc">{pin.description}</p> */}
-
                     </div>
-
                 ))}
             </div>
         </div>

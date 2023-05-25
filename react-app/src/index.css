@@ -7,9 +7,22 @@ html {
             rgba(255, 255, 255, 0.3)
         ), */
         url("https://wallpaperaccess.com/full/626893.jpg") ;
+        overflow-wrap: break-word;
+
 }
 
 
 a {
     text-decoration: none;
+  }
+
+
+  select {
+    width: 150px;
+    overflow-x: auto;
+  }
+
+
+  option {
+    width: 20%;
   }

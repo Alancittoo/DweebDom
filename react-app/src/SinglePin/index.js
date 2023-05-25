@@ -101,11 +101,11 @@ function SinglePin() {
                             Add to board:
                             <select
                                 value={selectedBoardId}
-                                style={{ marginLeft: '5px', borderRadius: '10px', marginTop: '15px' }}
+                                style={{ marginLeft: '5px', borderRadius: '10px', marginTop: '15px', width:'22%' }}
                                 onChange={(e) => setSelectedBoardId(e.target.value)}>
-                                <option value="">Select a board...</option>
+                                <option style={{width:'20%'}}value="">Select a board...</option>
                                 {boards.map(board =>
-                                    <option key={board.id} value={board.id}>{board.title}</option>
+                                    <option style={{width:'10%'}} key={board.id} value={board.id}>{board.title}</option>
                                 )}
 
                             </select>

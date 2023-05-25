@@ -11,6 +11,7 @@ import SinglePin from "./SinglePin";
 import AllBoards from "./components/AllBoards";
 import SingleBoard from "./components/SingleBoard";
 import SplashPage from "./SplashPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute"
 
 function App() {
   const dispatch = useDispatch();
@@ -28,23 +29,39 @@ function App() {
 
 
           <Route path='/home' component={HomePage}>
+            <ProtectedRoute>
             <HomePage />
+            </ProtectedRoute>
           </Route>
 
           <Route path='/pins/newPin' component={NewPin}>
+          <ProtectedRoute>
             <NewPin />
+            </ProtectedRoute>
           </Route>
 
           <Route path='/pins/:pinId' component={SinglePin}>
+          <ProtectedRoute>
+
             <SinglePin />
+            </ProtectedRoute>
+
           </Route>
 
           <Route path='/boards/single/:boardId' component={SingleBoard}>
+          <ProtectedRoute>
+
             <SingleBoard />
+            </ProtectedRoute>
+
           </Route>
 
           <Route path='/boards/:userId' component={AllBoards}>
+          <ProtectedRoute>
+
             <AllBoards />
+            </ProtectedRoute>
+
           </Route>
 
 

@@ -14,8 +14,7 @@ function NewPin() {
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
     const history = useHistory()
-
-
+    
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -35,7 +34,7 @@ function NewPin() {
             dispatch(authenticate())
             // dispatch(thunkGetPins)
             if (newPin) {
-                history.push(`/pins/${newPin.id}`)  
+                history.push(`/pins/${newPin.id}`)
             } else {
                 console.log('WAiting didnt work')
             }
@@ -50,6 +49,7 @@ function NewPin() {
         <div className="Create-pin-container">
             <img className="Create-pin-image-placeholder"
                 src={imageUrl ? imageUrl : process.env.PUBLIC_URL + '/placeholder-image.gif' }
+                onError={(e) => {e.target.onerror = null; e.target.src=process.env.PUBLIC_URL + '/BrokenImage.gif'}}
                 alt={imageUrl}
             />
             <form className="Create-pin-form" onSubmit={handleSubmit}>

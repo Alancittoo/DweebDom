@@ -35,6 +35,9 @@ function Navigation({ isLoaded }) {
 			</div>
 
 			<div className="nav-right">
+				<a href='https://github.com/Alancittoo'>
+				<button style={{border:'none', backgroundColor:'white'}}><i style={{marginRight:'25px', marginBottom:'3px', scale:'1.9', marginLeft:'10px'}} class="fa-brands fa-github"></i></button>
+				</a>
 				{isLoaded && <ProfileButton user={sessionUser} />}
 			</div>
 		</nav>

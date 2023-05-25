@@ -26,9 +26,13 @@ function LoginFormModal() {
 
   const demoUser = async (e) => {
     e.preventDefault()
-    await dispatch(login('demo@aa.io', 'password'))
-    setEmail('demo@aa.io')
-    setPassword('password')
+    const data = await dispatch(login('demo@aa.io', 'password'))
+    if (!data) {
+      setEmail('demo@aa.io')
+      setPassword('password')
+      closeModal()
+      history.push('/home')
+    }
   }
 
   return (

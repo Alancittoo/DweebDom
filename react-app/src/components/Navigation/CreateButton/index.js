@@ -34,10 +34,10 @@ function CreateButton() {
         </p>
         <ul className={ulClassName} ref={ulRef}>
           <li style={{listStyle:'none',}}>
-            <NavLink to="/pins/newPin">Create Pin</NavLink>
+            <NavLink to="/pins/newPin" onClick={() => setShowMenu(false)}>Create Pin</NavLink>
           </li>
           <li style={{listStyle:'none'}}>
-            <NavLink to="/boards/newBoard">Look at Your Boards</NavLink>
+            <NavLink to="/boards/newBoard" onClick={() => setShowMenu(false)}>Look at Your Boards</NavLink>
           </li>
         </ul>
       </>
