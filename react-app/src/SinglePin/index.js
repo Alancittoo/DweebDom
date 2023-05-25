@@ -55,15 +55,18 @@ function SinglePin() {
         e.preventDefault();
         if (!selectedBoardId) {
             console.log('No board selected')
+            setShowMessage(true)
             return;
         }
         const res = await dispatch(thunkAddPinToBoard(selectedBoardId, pinId))
         if (res) {
             console.log('Pin added to board!')
             setIsAdded(true)
+            setShowMessage(false)
         } else {
             console.log('Failed add pin to boar')
             setIsAdded(false)
+            setShowMessage(true)
 
         }
     }
@@ -120,7 +123,7 @@ function SinglePin() {
 
                             </select>
                         </label>
-                        <button className='addToYourBoardButton' onClick={handleBoardValidClick} style={{ border: '1px black solid', cursor: 'pointer', marginLeft: '15px', borderRadius:'10px' }} type="submit">+ Add to Your Board</button>
+                        <button className='addToYourBoardButton' style={{ border: '1px black solid', cursor: 'pointer', marginLeft: '15px', borderRadius:'10px' }} type="submit">+ Add to Your Board</button>
                         {isAdded && <div>Pin added to board!</div>}
                         {showMessage && <p>Please select a board! Or Create a new Board!</p>}
                     </form>
