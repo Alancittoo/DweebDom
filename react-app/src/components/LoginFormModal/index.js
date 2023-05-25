@@ -52,6 +52,7 @@ function LoginFormModal() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            style={{marginLeft:'55px'}}
           />
         </label>
         <label>
@@ -64,7 +65,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button className='login-button' type="submit">Log In</button>
+        <button style={{marginLeft:'85px'}}className='login-button' type="submit">Log In</button>
       </form>
       <h3 style={{marginLeft: '165px'}}> or </h3>
       <button className="DemoUser" onClick={(e) => demoUser(e)}>Try A Demo User</button>

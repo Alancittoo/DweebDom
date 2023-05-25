@@ -47,14 +47,18 @@ function AllBoards() {
     return (
         <div>
             {Object.values(boards).map(board => (
-                <div key={board.id}>
-                <NavLink to={`/boards/single/${board.id}`}>
+                <div style={{marginLeft:'35px'}} key={board.id}>
+                <NavLink
+                to={`/boards/single/${board.id}`}
+                style={{color:'White', marginLeft:'25px'}}
+                className='allBoards-details'
+                >
                     <h2>{board.title}</h2>
                     <p>{board.description}</p>
                 </NavLink>
                 </div>
             ))}
-            <button className='Create-new-board-button' onClick={() => setShowForm(!showForm)}>Create New Board</button>
+            <button style={{marginLeft:'35px'}} className='Create-new-board-button' onClick={() => setShowForm(!showForm)}>Create New Board</button>
             {showForm && (
                 <form className='Create-board-form' onSubmit={handleCreateBoard}>
                     <input

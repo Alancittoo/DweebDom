@@ -32,8 +32,9 @@ function SplashPage() {
 
     return (
         <>
+        <div className='SplashPage-container'>
             <div className="SplashPage-static">
-                <h1>
+                <h1 >
                     Get your next
                 </h1>
             </div>
@@ -52,6 +53,7 @@ function SplashPage() {
                         style={{borderRadius: '10px'}}
                     />
                 ))}
+            </div>
             </div>
         </>
     );

@@ -1,15 +1,12 @@
 /* TODO Add site wide styles */
 html {
-    background:
-        /* linear-gradient(
-            to bottom,
-            rgba(61, 5, 5, 0.3),
-            rgba(255, 255, 255, 0.3)
-        ), */
-        url("https://wallpaperaccess.com/full/626893.jpg") ;
-        overflow-wrap: break-word;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
+    background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURFRUYHSggGBolGxUVITEhMSk3Li46Fx8zOD84Nyg5OjcBCgoKDQ0NDg0NDjcZFRkrLSsrLTcrNysrLSsrKy0rKy0rLS0rLSsrKysrKysrLSsrKysrKysrKysrKysrKy0rK//AABEIAU0AlwMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAABAgAFBAf/xAAWEAEBAQAAAAAAAAAAAAAAAAAAEQH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAgAEAwX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/APlcCoHO+vUwKBTUp3FjVJqBFjcKagLgik1EC4IYEsY0UlIVBCBBFApSyoCzotFQOR3JgihCmoG4vcG4U1EEXuCKTUbgixClDRUEUE7gXBDEoZUEUEtFQFKWLFnSgi4I43aiCLghFRBFwRSajcEXuJ0pTBFwRUTUQRcEUEwKghiUwLgiggRcBSliSzotFQRxu1MEXBClG4IuCKCNwRcG4Uogio0UEQRcEVEogi4IpKI0XuJITExY3ClEZQLOpGio0cbsRBFwQpRBF7gigiCLghCIIuCKSiBe4IqBAioysSgbi9TClG4F6NxQQxYs6sCmjidaINWIQiNFQKCI0VBClEC4NxUCGitwRUSiDcWFBG4IvcTqko3Bq9TpCGLEOsFBxOtMZQITBFBQSNVAqBEaKgVEp1K9GqgQNxQ1SUp1WjSEanV6nVJSzEs6wimcLqSFAhIUFQJgUFQJ3ArRqolOhWpVAkaoaqJRqdXqdUE6nVanSEszEOwCHC6mBBAGllQJB0aqAalQ1UCQpOqiUjVanVJqdGkaoI1Or1GkJZmYOzoIcTrDEFI0NrKYalWpVEjQdCoBqVanVJGp1Wp1QqdTqtTqkp1Oq1OkJZmZnZDBxOpgQoAaQQBp1KolkkaqBtTp1OqSNB1OqA1OnU6QNRqtTpSkhizsMwcbqYMNIbQw0xLBgoUaG0KiW1OnU6oNqdOp0htTp1OlKdTqtTpYMGIdigUVyuo0UVqUsNG6KQwrUFLCtU7qgU6U6Q2p0p1QbU6dTpA1OnU6wDMxDqiiiuZ1GijdFKTWoopFbdFbU0pNGtRukMGoKW1OtuhQbU6dTpYaNOp1gGYFnTooorwdOmtRRWSaKKKUmigUg0NRuslhrUbpDaNYUhk6RpYanTqdIZgxZ0K1TWrxdGmiiisk0UUFJorBgaKAQQ1DBq2hiGTSnSzBtGlmDAh7q1TQ83uqigAKooorJLAVgRWopBAasGYUFmGmpIYawLMwJZ6qwZ5vYihmSzBmDMBWBFZmDBmYMGoLMGGlm0awLMQxjPVRRWQ9SwoCSwDA0MGBFYMxGsGBDClmDUFmDNpZmDFnpYMl6EUMAQwCSGDMQwYECsWYMCxDBmZgxDMwLPSwZL0ZgwBDMAzBmDDdYFmZgzMwYswZiGDMzMzBUZ//2Q==") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-wrap: break-word;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100%;
 }
 
 

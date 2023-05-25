@@ -14,7 +14,7 @@ function NewPin() {
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
     const history = useHistory()
-    
+
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -54,10 +54,13 @@ function NewPin() {
             />
             <form className="Create-pin-form" onSubmit={handleSubmit}>
                 <div className="Create-pin-header">
-                    <h1>Create A New Pin !</h1>
+                    <h1 style={{color: 'white'}}>Create A New Pin !</h1>
                 </div>
+                <p style={{color: 'white'}} className="create-pin-errors">{errors.imageUrl}</p>
+
                 <label className="create-pin-form-image">
                     <input
+
                         name="imageUrl"
                         value={imageUrl}
                         className="imageUrl-label"
@@ -67,8 +70,9 @@ function NewPin() {
                             console.log(e.target.value)
                             setImageUrl(e.target.value)}}
                     />
-                    <p className="create-pin-errors">{errors.imageUrl}</p>
                 </label>
+                <p style={{color: 'white'}} className="create-pin-errors">{errors.title}</p>
+
                 <label className="create-pin-form-title">
                     <input
                         name="title"
@@ -80,7 +84,6 @@ function NewPin() {
                             console.log(e.target.value)
                             setTitle(e.target.value)}}
                     />
-                    <p className="create-pin-errors">{errors.title}</p>
                 </label>
                 <label className="create-pin-form-description">
                     <input
@@ -92,12 +95,13 @@ function NewPin() {
                         onChange={(e) => {
                             console.log(e.target.value)
                             setDescription(e.target.value)}}
+                        style={{marginTop:'30px'}}
                     />
                     {/* <p className="create-pin-errors">{errors.title}</p> */}
                 </label>
-                <hr/>
+                {/* <hr/> */}
                 <div>
-                    <button  className='Create-pin-submit-button' >Create My Pin 🎉</button>
+                    <button  style={{marginTop:'30px', marginLeft: '-2px'}} className='Create-pin-submit-button' >Create My Pin 🎉</button>
                 </div>
             </form>
         </div>

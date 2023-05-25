@@ -25,3 +25,7 @@
 /* .Creaete-board.form form textarea {
     height: 550px;
 } */
+
+.allBoards-details:hover{
+  animation: glow 2s ease-in-out infinite;
+}

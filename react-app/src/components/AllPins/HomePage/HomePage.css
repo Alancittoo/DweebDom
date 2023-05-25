@@ -2,8 +2,14 @@
   column-count: 4;
   column-gap: 2em;
   padding: 6em;
-  margin-left: 195px;
-  width: 70%;
+  /* margin-left: 195px; */
+
+  width: 67%;
+}
+.HomePage-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .HomePage-pin-container {
