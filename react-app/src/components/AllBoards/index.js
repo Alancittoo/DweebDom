@@ -60,18 +60,20 @@ function AllBoards() {
             ))}
             <button style={{marginLeft:'35px'}} className='Create-new-board-button' onClick={() => setShowForm(!showForm)}>Create New Board</button>
             {showForm && (
-                <form className='Create-board-form' onSubmit={handleCreateBoard}>
+                <form style={{marginLeft:'30px', marginTop:'20px'}} className='Create-board-form' onSubmit={handleCreateBoard}>
                     <input
                         type="text"
                         value={boardTitle}
                         onChange={(e) => setBoardTitle(e.target.value)}
                         placeholder="Enter Board Title"
+                        style={{borderRadius:'5px'}}
                     />
                     {errors.boardTitle}
                     <textarea
                         value={boardDescription}
                         onChange={(e) => setBoardDescription(e.target.value)}
                         placeholder="Enter Board Description"
+                        style={{borderRadius:'10px'}}
                     />
                     <button className='Create-new-board-button'type="submit">Create Board</button>
                     {errors.map((error) => (

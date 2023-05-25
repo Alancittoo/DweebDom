@@ -51,9 +51,9 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+		<div className="signup-container">
+			<h1 className="signup-main-text">Sign Up for Dweebdom 🤓</h1>
+			<form className='signup-form' onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
@@ -64,6 +64,8 @@ function SignupFormModal() {
 					<input
 						type="text"
 						value={email}
+						style={{marginLeft:'112px'}}
+						className="signup-form-input"
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
@@ -73,6 +75,8 @@ function SignupFormModal() {
 					<input
 						type="text"
 						value={username}
+						className="signup-form-input"
+						style={{marginLeft:'79px'}}
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
@@ -81,7 +85,9 @@ function SignupFormModal() {
 					First Name
 					<input
 						type="fname"
+						className="signup-form-input"
 						value={fname}
+						style={{marginLeft:'75px'}}
 						onChange={(e) => setFName(e.target.value)}
 						required
 					/>
@@ -91,6 +97,8 @@ function SignupFormModal() {
 					<input
 						type="lname"
 						value={lname}
+						className="signup-form-input"
+						style={{marginLeft:'78px'}}
 						onChange={(e) => setLName(e.target.value)}
 						required
 					/>
@@ -99,7 +107,9 @@ function SignupFormModal() {
 					Password
 					<input
 						type="password"
+						className="signup-form-input"
 						value={password}
+						style={{marginLeft:'87px'}}
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
@@ -108,15 +118,16 @@ function SignupFormModal() {
 					Confirm Password
 					<input
 						type="password"
+						className="signup-form-input"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 					/>
 				</label>
 
-				<button type="submit">Sign Up</button>
+				<button style={{marginLeft:'85px'}} className="signup-button" type="submit">Sign Up</button>
 			</form>
-		</>
+		</div>
 	);
 }
 

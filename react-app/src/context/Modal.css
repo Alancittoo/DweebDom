@@ -20,7 +20,7 @@
 
 #modal-content {
   position: absolute;
-  background-color:rgb(153, 136, 167);
+  background: linear-gradient(to bottom right, rgb(146, 74, 74), rgb(91, 91, 204));
   border: black 1px solid;
   padding: 35px;
   border-radius: 10px;

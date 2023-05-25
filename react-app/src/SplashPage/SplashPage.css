@@ -1,10 +1,11 @@
   .SplashPage-container{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh
   }
+
+
 
 
   .SplashPage-static {
@@ -30,7 +31,8 @@
   .Splashpage-image-container {
     margin-top: 30%;
     display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 15px;
+    /* flex-wrap: wrap; */
     justify-content: center;
     align-items: center;
   }
@@ -69,4 +71,19 @@
 .Splashpage-secondary-text {
   color: #fff;
   animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes slide-fade-up-images {
+  0% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.splashpage-images {
+  animation: slide-fade-up-images 1s ease-in-out;
 }
