@@ -29,15 +29,15 @@ function CreateButton() {
 
     return (
       <>
-        <p style={{marginLeft:'15px'}} onClick={openMenu}>
-          <i className="create-button" /> Create
+        <p style={{marginLeft:'15px', fontWeight:'bold'}} onClick={openMenu}>
+          <i  className="create-button" /> Create<i style={{marginLeft:'5px', marginTop:'3px'}} class="fa-solid fa-angle-down"></i>
         </p>
         <ul className={ulClassName} ref={ulRef}>
           <li style={{listStyle:'none',}}>
-            <NavLink to="/pins/newPin" onClick={() => setShowMenu(false)}>Create Pin</NavLink>
+            <NavLink to="/pins/newPin" style={{fontWeight:'bold', color:'black'}} onClick={() => setShowMenu(false)}>Create Pin</NavLink>
           </li>
           <li style={{listStyle:'none'}}>
-            <NavLink to="/boards/newBoard" onClick={() => setShowMenu(false)}>Look at Your Boards</NavLink>
+            <NavLink to="/boards/newBoard" style={{fontWeight:'bold', color:'black'}} onClick={() => setShowMenu(false)}>Look at Your Boards</NavLink>
           </li>
         </ul>
       </>

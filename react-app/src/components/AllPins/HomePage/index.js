@@ -31,8 +31,6 @@ function HomePage() {
     // const newest = pins[pins.length -5]
     const newest = pins[pins.length - 1]
     const otherPins = pins.length > 0 ? pins.slice(0, pins.length - 1) : []
-    // console.log('Newest', newest)
-    // const otherPins = pins.length > 0 ? pins.slice
 
     shufflePins(otherPins);
 
@@ -40,10 +38,10 @@ function HomePage() {
         <div className="HomePage-container">
             <div className="HomePage-image-container">
                 <div className="HomePage-pin-container">
-                    {/* <NavLink to={`/pins/${newest.id.in_}`}>
-                        <img className='HomePage-pin-image' src={newest.image_url} alt={newest.title} />
+                    <NavLink to={`/pins/${newest?.id}`}>
+                        <img className='HomePage-pin-image' src={newest?.image_url} alt={newest?.title} />
                         <PinImage pin={newest} />
-                    </NavLink> */}
+                    </NavLink>
                 </div>
                 {otherPins.map(pin => (
                     <div key={pin.pinId} className="HomePage-pin-container">

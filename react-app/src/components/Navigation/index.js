@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
 				<img className="nav-logo" src='https://media.istockphoto.com/id/1333688503/vector/nerd-geek-boy-icon-design-template-illustration.jpg?s=612x612&w=0&k=20&c=RrQssmQmkerQxu_Nn6w9xAJ5SfGnBggKTOMgCg-jqxQ=' alt='logo' />
 				{sessionUser &&
 					<>
-						<NavLink to="/home" onClick={handleHomeClick}>Home</NavLink>
+						<NavLink to="/home" className='navbar-home-button' style={{fontWeight:'bold', color:'black'}} onClick={handleHomeClick}>Home</NavLink>
 						<div className="create-button-container">
 							<CreateButton />
 						</div>

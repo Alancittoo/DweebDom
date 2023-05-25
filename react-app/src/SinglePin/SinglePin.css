@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: auto;
 }
 
 .SinglePin-content {
@@ -16,7 +16,9 @@
 .SinglePin-image {
   width: 100%;
   height: auto;
+  max-height: 700px;
   display: block;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 16px;
 }
@@ -67,4 +69,3 @@
   color: black;
   border: 1px solid black;
 }
-

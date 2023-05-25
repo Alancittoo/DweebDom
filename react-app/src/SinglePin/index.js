@@ -92,7 +92,7 @@ function SinglePin() {
         <div className="SinglePin-container">
             {pins && (
                 <div className="SinglePin-content" style={{ width: '30%', }}>
-                    <img className="SinglePin-image" src={pins[pinId].image_url} alt={pins[pinId].title} />
+                    <img className="SinglePin-image" src={pins[pinId]?.image_url} alt={pins[pinId]?.title} />
                     <h1 className="SinglePin-title">{pins[pinId].title}</h1>
                     <p className="SinglePin-description">{pins[pinId].description}</p>
 
