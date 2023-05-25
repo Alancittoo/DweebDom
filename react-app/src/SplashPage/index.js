@@ -18,11 +18,11 @@ function SplashPage() {
     useEffect(() => {
         const textInterval = setInterval(() => {
             setCurrentTextIndex(prevIndex => (prevIndex + 1) % mainText.length);
-        }, 3000)
+        }, 4500)
 
         const imageInterval = setInterval(() => {
             setCurrentArrayIndex(prevIndex => (prevIndex + 1) % imageArrays.length);
-        }, 3000)
+        }, 4500)
 
         return () => {
             clearInterval(textInterval);
