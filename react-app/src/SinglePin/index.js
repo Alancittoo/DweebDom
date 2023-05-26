@@ -23,7 +23,6 @@ function SinglePin() {
     const [errors, setErrors] = useState([])
     const [isAdded, setIsAdded] = useState(false)
     // console.log(useSelector(state => state))
-    const [boardSelected, setBoardSelected] = useState(false)
     const [showMessage, setShowMessage] = useState(false)
 
 
@@ -35,15 +34,18 @@ function SinglePin() {
     }, [dispatch, pinId, currentUser.id])
 
     useEffect(() => {
+        // console.log(pins)
+        // console.log(pinId)
         if (pins && pins[pinId]) {
             setTitle(pins[pinId].title)
             setDescription(pins[pinId].description)
             setImageUrl(pins[pinId].image_url)
         }
+        console.log(imageUrl)
     }, [pins, pinId]);
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div style={{color: 'white'}}>Loading...</div>
     }
 
     const handleDelete = () => {
@@ -85,7 +87,8 @@ function SinglePin() {
         const pin = { title, description, image_url: imageUrl }
         const res = await dispatch(thunkUpdatePin(pin, pinId))
         if (res) {
-            await dispatch(thunkGetSinglePin(pinId))
+            console.log('PIN', pin)
+            dispatch(thunkGetSinglePin(pinId))
             setErrors([])
         }
         setIsEditing(false)
@@ -93,7 +96,7 @@ function SinglePin() {
     }
 
     const handleBoardValidClick = () => {
-        if (!boardSelected) {
+        if (!selectedBoardId) {
           setShowMessage(true)
         } else {
           setShowMessage(false)
@@ -105,9 +108,15 @@ function SinglePin() {
         <div className="SinglePin-container">
             {pins && (
                 <div className="SinglePin-content" style={{ width: '30%', }}>
-                    <img className="SinglePin-image" src={pins[pinId]?.image_url} alt={pins[pinId]?.title} />
-                    <h1 className="SinglePin-title">{pins[pinId].title}</h1>
-                    <p className="SinglePin-description">{pins[pinId].description}</p>
+                    <img className="SinglePin-image"
+                    src={pins[pinId]?.image_url}
+                    onError={(e) => {
+                        e.target.onerror = null
+                        e.target.src = '/brokenpt2.gif'
+                    }}
+                    alt={pins[pinId]?.title} />
+                    <h1 className="SinglePin-title">{pins[pinId]?.title}</h1>
+                    <p className="SinglePin-description">{pins[pinId]?.description}</p>
 
                     <form onSubmit={handleAddToBoard}>
                         <label >
@@ -115,7 +124,9 @@ function SinglePin() {
                             <select
                                 value={selectedBoardId}
                                 style={{ marginLeft: '5px', borderRadius: '10px', marginTop: '15px', width:'22%' }}
-                                onChange={(e) => setSelectedBoardId(e.target.value)}>
+                                onChange={(e) => {setSelectedBoardId(e.target.value)
+                                                  setShowMessage(false)
+                                }}>
                                 <option style={{width:'20%'}}value="">Select a board...</option>
                                 {boards.map(board =>
                                     <option style={{width:'10%'}} key={board.id} value={board.id}>{board.title}</option>
@@ -127,7 +138,7 @@ function SinglePin() {
                         {isAdded && <div>Pin added to board!</div>}
                         {showMessage && <p>Please select a board! Or Create a new Board!</p>}
                     </form>
-                    {currentUser.id === pins[pinId].user_id && (
+                    {currentUser.id === pins[pinId]?.user_id && (
                         <>
 
                             <button style={{border: 'none', cursor: 'pointer', margin: '5px'}} onClick={() => setIsEditing(true)}>Update</button>
@@ -153,6 +164,7 @@ function SinglePin() {
                                         Image URL:
                                         <input
                                             className="SinglePin-input"
+
                                             value={imageUrl}
                                             onChange={(e) => setImageUrl(e.target.value)}
                                         />
