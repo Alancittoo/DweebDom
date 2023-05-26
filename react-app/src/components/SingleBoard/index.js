@@ -60,10 +60,11 @@ function SingleBoard() {
 
     if (res){
       setErrors([])
+      dispatch(thunkGetSingleBoard(boardId))
     }
 
     setIsEditing(false);
-    history.push(`/boards/${boardId}`)
+    // history.push(`/boards/${boardId}`)
   }
 
   if (!currentBoard) {
@@ -108,7 +109,7 @@ function SingleBoard() {
         </div>
       )}
       <div className="SingleBoard-image-container">
-        {currentBoard.pins.map((pin) => (
+        {currentBoard.pins?.map((pin) => (
           <div key={pin.id} className="SingleBoard-pin-container">
             <NavLink to={`/pins/${pin.id}`}>
               <img className='SingleBoard-pin-image' src={pin.image_url} alt={pin.title} />

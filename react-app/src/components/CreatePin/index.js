@@ -89,8 +89,8 @@ function NewPin() {
                     <input {...getInputProps()} />
                     {
                         isDragActive ?
-                            <p>Drop the files here ...</p> :
-                            <p style={{color:'white'}}>Drag 'n' drop some files here, or click to select files</p>
+                            <p>Drop the goods here ...</p> :
+                            <p style={{color:'white'}}>Drag 'n' drop your file here, or click to select a file</p>
                     }
                 </div>
 
@@ -126,7 +126,7 @@ function NewPin() {
                     <button
                      onClick={() => {
                         if (!imageUrl || !title.trim() || Object.values(errors).length > 0) {
-                            alert("Sorry you have to put a title and an image.");
+                            // alert("Sorry you have to put a title and an image.");
                         }
                     }}
                     style={{marginTop:'30px', marginLeft: '-2px'}}

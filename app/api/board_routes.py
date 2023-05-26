@@ -95,6 +95,14 @@ def adding_pin(board_id, pin_id):
     if not pin:
         return {"error": "CANNOT FIND PIN"}
 
+    pin_exists = db.session.query(board_pins).filter(
+        board_pins.c.board_id == board.id,
+        board_pins.c.pin_id == pin.id
+    ).first()
+
+    if pin_exists:
+        return {"error": "This pin already exists for the board silly"}
+
     board.board_pins_association.append(pin)
     db.session.commit()
     return board.to_dict()

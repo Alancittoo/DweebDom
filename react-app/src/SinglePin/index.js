@@ -22,8 +22,8 @@ function SinglePin() {
     const [selectedBoardId, setSelectedBoardId] = useState(null)
     const [errors, setErrors] = useState([])
     const [isAdded, setIsAdded] = useState(false)
-    // console.log(useSelector(state => state))
     const [showMessage, setShowMessage] = useState(false)
+    const [isDupe, setIsDupe] = useState(false)
 
 
     useEffect(() => {
@@ -58,18 +58,29 @@ function SinglePin() {
         if (!selectedBoardId) {
             console.log('No board selected')
             setShowMessage(true)
+            setIsDupe(false)
+            setIsAdded(false)
             return;
         }
         const res = await dispatch(thunkAddPinToBoard(selectedBoardId, pinId))
-        if (res) {
-            console.log('Pin added to board!')
+        console.log('RES FOR ADDTOBOARD', res)
+        if (res.error) {
+            if (res.error === "This pin already exists for the board silly") {
+                console.log('Pin already exists in this board')
+                setIsAdded(false)
+                setShowMessage(false)
+                setIsDupe(true)
+            } else {
+                console.log('Failed to add pin to board')
+                setIsAdded(false)
+                setShowMessage(true)
+                setIsDupe(false)
+            }
+        } else {
+            console.log('Pin added to board')
             setIsAdded(true)
             setShowMessage(false)
-        } else {
-            console.log('Failed add pin to boar')
-            setIsAdded(false)
-            setShowMessage(true)
-
+            setIsDupe(false)
         }
     }
 
@@ -95,15 +106,6 @@ function SinglePin() {
         // history.push(`/pins/${pinId}`)
     }
 
-    const handleBoardValidClick = () => {
-        if (!selectedBoardId) {
-          setShowMessage(true)
-        } else {
-          setShowMessage(false)
-        }
-      };
-
-
     return (
         <div className="SinglePin-container">
             {pins && (
@@ -126,6 +128,7 @@ function SinglePin() {
                                 style={{ marginLeft: '5px', borderRadius: '10px', marginTop: '15px', width:'22%' }}
                                 onChange={(e) => {setSelectedBoardId(e.target.value)
                                                   setShowMessage(false)
+                                                  setIsAdded(false)
                                 }}>
                                 <option style={{width:'20%'}}value="">Select a board...</option>
                                 {boards.map(board =>
@@ -136,7 +139,8 @@ function SinglePin() {
                         </label>
                         <button className='addToYourBoardButton' style={{ border: '1px black solid', cursor: 'pointer', marginLeft: '15px', borderRadius:'10px' }} type="submit">+ Add to Your Board</button>
                         {isAdded && <div>Pin added to board!</div>}
-                        {showMessage && <p>Please select a board! Or Create a new Board!</p>}
+                        {showMessage && <div>Please select a board! Or Create a new Board!</div>}
+                        {isDupe && <div>The pin already exists for that board silly!</div>}
                     </form>
                     {currentUser.id === pins[pinId]?.user_id && (
                         <>
@@ -176,7 +180,7 @@ function SinglePin() {
                                 </form>
 
                             )}
-                            <p style={{ margin: '15px', cursor: 'pointer' }} onClick={handleDelete}><i class="fa-solid fa-trash-can"></i></p>
+                            <p style={{ width:'30px',margin: '15px', cursor: 'pointer' }} onClick={handleDelete}><i class="fa-solid fa-trash-can"></i></p>
                         </>
                     )}
                 </div>
