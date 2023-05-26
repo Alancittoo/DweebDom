@@ -74,20 +74,20 @@ function SingleBoard() {
     <div className="SingleBoard-container">
       {isEditing ? (
         <form onSubmit={handleSubmit}>
-          <label style={{marginRight: '15px', marginLeft:'10px'}}>
+          <label style={{marginRight: '15px', marginLeft:'10px', animation: 'glow 2s ease-in-out infinite', color:'white'}}>
             Title:
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              style={{margin:'5px', marginTop: '35px', marginLeft:'10px'}}
+              style={{margin:'5px', marginTop: '35px', marginLeft:'10px', borderRadius:'4px'}}
             />
           </label>
-          <label>
+          <label style={{animation: 'glow 2s ease-in-out infinite', color:'white'}}>
             Description:
             <input
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              style={{margin:'5px', marginTop: '35px', marginLeft:'10px'}}
+              style={{margin:'5px', marginTop: '35px', marginLeft:'10px', borderRadius:'4px'}}
             />
           </label>
           <button className='Update-board-button' type="submit">Submit</button>
@@ -114,7 +114,7 @@ function SingleBoard() {
               <img className='SingleBoard-pin-image' src={pin.image_url} alt={pin.title} />
             </NavLink>
             {currentUser.id == currentBoard.user_id && (
-              <p className='DeletePinFromBoardButton' onClick={() => handleDeletePinFromBoard(pin.id)}><i class="fa-solid fa-trash-can"></i></p>
+              <p className='DeletePinFromBoardButton' onClick={() => handleDeletePinFromBoard(pin.id)}><i style={{color:'white'}} class="fa-solid fa-trash-can"></i></p>
             )}
           </div>
 

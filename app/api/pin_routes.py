@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, db, Pin
-from ..forms.pin_form import PinForm
+from ..forms.pin_form import PinForm, PinUpdateForm
+from ..api.aws_helpers import get_unique_filename, upload_file_to_s3
 
 pin_routes = Blueprint('pins', __name__)
 
@@ -23,14 +24,30 @@ def single_pin(pin_id):
 @login_required
 def create_pin():
     user = current_user
-    form = PinForm()
+    data = request.files
+    form = PinForm(
+        image_url=data.get('image_url'),
+        title = data.get('title'),
+        description = data.get('description'),
+        user_id = user.id
+    )
+
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
         # data = request.get_json()
+        image_url = form.data["image_url"]
+        image_url.filename = get_unique_filename(image_url.filename)
+        upload = upload_file_to_s3(image_url)
+
+        if "url" not in upload:
+            return upload["errors"]
+
+        newImage = upload['url']
+
         print("Received Form Data:", form.data)
         new_pin = Pin(
-            image_url = form.data['image_url'],
+            image_url = newImage,
             title = form.data['title'],
             description = form.data['description'],
             user_id = user.id
@@ -47,8 +64,9 @@ def create_pin():
 @pin_routes.route('/update/<int:pin_id>', methods=['PUT'])
 @login_required
 def update_pin(pin_id):
+    print('BACKEND REQUEST UPDATE', request.json)
     pin = Pin.query.get(pin_id)
-    form = PinForm()
+    form = PinUpdateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():

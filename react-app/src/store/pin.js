@@ -55,7 +55,7 @@ export const thunkGetSinglePin = (pin_id) => async(dispatch) => {
     const res = await fetch(`/api/pins/singlePin/${pin_id}`)
     if (res.ok){
         const data = await res.json()
-        dispatch(getSinglePin(pin_id))
+        dispatch(getSinglePin(data))
         return data
     }
     else{
@@ -68,10 +68,7 @@ export const thunkGetSinglePin = (pin_id) => async(dispatch) => {
 export const thunkCreatePin = (pin) => async(dispatch) => {
     const res = await fetch(`/api/pins/newPin`,{
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-          },
-        body: JSON.stringify(pin)
+        body: (pin)
     })
     if (res.ok){
         const data = await res.json()

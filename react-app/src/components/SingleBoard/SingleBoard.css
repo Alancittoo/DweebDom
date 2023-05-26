@@ -40,6 +40,8 @@
 
 .board-info{
   padding: 15px;
+  animation: glow 2s ease-in-out infinite;
+  color: white;
 }
 
 .board-info > button {
