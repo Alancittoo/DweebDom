@@ -22,10 +22,6 @@
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 
-# Flask React DweebDom (Pinterest Clone) Project
-
-This is the starter for the Flask React project.
-
 ## Getting started
 1. Clone this repository (only this branch)
 
