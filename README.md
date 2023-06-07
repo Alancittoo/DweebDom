@@ -1,8 +1,16 @@
 
+## SplashPage / Login & Signup
+
+![splashpage](https://github.com/Alancittoo/DweebDom/assets/98733614/3223e871-c9a4-484f-b0c5-1a9aaaa8ecd2)
 
 
+## Viewing all pins / a single pin
 
 
+## Creating a new pin
+
+
+## All boards / creating a board / viewing a single board
 
 
 
