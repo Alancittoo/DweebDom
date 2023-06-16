@@ -13,7 +13,6 @@ class PinForm(FlaskForm):
 
 class PinUpdateForm(FlaskForm):
     image_url = StringField('Image file') # No FileRequiredfor update
-    
     title = StringField('Title', validators = [DataRequired()])
     description = StringField('Description')
     user_id = IntegerField('user_id')
