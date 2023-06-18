@@ -30,11 +30,11 @@ def new_comment():
 
 @comment_routes.route('/update/<int:id>', methods=['PUT'])
 @login_required
-def update_comment(comment_id):
+def update_comment(id):
     form = CommentUpdateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        comment = Comment.query.get(comment_id)
+        comment = Comment.query.get(id)
         if comment and comment.user_id == current_user.id:
             comment.comment = form.data['comment']
             db.session.commit()
@@ -59,7 +59,7 @@ def comments_by_pin(pin_id):
     comments = Comment.query.filter_by(pin_id=pin_id).all()
     return {"pinComments": [comment.to_dict() for comment in comments]}
 
-#May need later but for now not being used 
+#May need later but for now not being used
 # @comment_routes.route('/<int:id>', methods=['GET'])
 # def get_comment(id):
 #     comment = Comment.query.get(id)
