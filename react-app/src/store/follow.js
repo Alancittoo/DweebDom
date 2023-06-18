@@ -15,12 +15,12 @@ export const unfollowUser = (userId) => ({
 })
 
 export const setFollowing = (following) => ({
-    type: SET_FOLLOWING,
+    type: USER_FOLLOWING,
     following
 })
 
 export const setFollowers = (followers) => ({
-    type: SET_FOLLOWERS,
+    type: USERS_FOLLOWERS,
     followers
 })
 
@@ -107,11 +107,11 @@ const followReducer = (state = initialState, action) => {
             newState = { ...state, following: state.following.filter(id => id !== action.userId) }
             return newState;
 
-        case SET_FOLLOWING:
+        case USER_FOLLOWING:
             newState = { ...state, following: action.following }
             return newState;
 
-        case SET_FOLLOWERS:
+        case USERS_FOLLOWERS:
             newState = { ...state, followers: action.followers }
             return newState;
 
@@ -121,6 +121,3 @@ const followReducer = (state = initialState, action) => {
 };
 
 export default followReducer;
-
-
-export default followReducer
