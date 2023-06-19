@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const SET_PROFILE_USER = "session/SET_PROFILE_USER"
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -11,7 +12,16 @@ const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
-const initialState = { user: null };
+const setProfileUser = (user) => ({
+	type: SET_PROFILE_USER,
+	payload: user,
+});
+
+
+const initialState = {
+	user: null,
+	profileUser: null
+ };
 
 export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/", {
@@ -117,12 +127,26 @@ export const signUp = (username, email, password, fname, lname) => async (dispat
 	}
 };
 
+export const thunkGetUserById = (userId) => async (dispatch) => {
+	const res = await fetch(`/api/auth/user/${userId}`);
+
+	if (res.ok) {
+		const user = await res.json();
+		dispatch(setProfileUser(user));
+		console.log(res, 'THUNK GET USER BY ID SUCCESS')
+		console.log(user, "THUNK GET USER BY ID USER INFO")
+		return user
+	}
+};
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case SET_USER:
-			return { user: action.payload };
+			return { ...state, user: action.payload };
+		case SET_PROFILE_USER:
+			return { ...state, profileUser: action.payload };
 		case REMOVE_USER:
-			return { user: null };
+			return { ...state, user: null };
 		default:
 			return state;
 	}

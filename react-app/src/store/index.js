@@ -4,6 +4,7 @@ import session from './session'
 import pinReducer from './pin';
 import boardReducer from './board';
 import commentReducer from './comment';
+import followReducer from './follow';
 
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   pins: pinReducer,
   boards: boardReducer,
   comments: commentReducer,
+  follows: followReducer
 });
 
 

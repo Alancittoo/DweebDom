@@ -8,8 +8,10 @@ board_routes = Blueprint('boards', __name__)
 @board_routes.route('/allBoards/<int:user_id>')
 @login_required
 def current_user_boards(user_id):
-    # user = current_user.id
-    boards = current_user.user_boards_relationship
+    user = User.query.get(user_id)
+    if not user:
+        return {"error": "User not found"}, 404
+    boards = user.user_boards_relationship
     return jsonify([board.to_dict() for board in boards])
 
 @board_routes.route('/<int:board_id>')

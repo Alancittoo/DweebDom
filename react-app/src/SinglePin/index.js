@@ -6,7 +6,8 @@ import { thunkDeletePin } from "../store/pin";
 import './SinglePin.css'
 import { thunkGetBoards, thunkAddPinToBoard } from "../store/board";
 import { thunkGetPinComments, thunkUpdateComment, thunkDeleteComment, thunkCreateComment } from "../store/comment";
-
+import { thunkGetUserById } from "../store/session";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function SinglePin() {
     const dispatch = useDispatch()
@@ -31,17 +32,26 @@ function SinglePin() {
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editingCommentText, setEditingCommentTextsContents] = useState("");
 
+    const [pinOwner, setPinOwner] = useState(null);
 
     useEffect(() => {
+        console.log('Pin ID from useParams: ', pinId)
         dispatch(thunkGetPins())
+        .then((res) => console.log('Result from thunkGetPins: ', res));
         dispatch(thunkGetSinglePin(pinId))
+        .then((res) => console.log('Result from thunkGetSinglePin: ', res)); 
+
         dispatch(thunkGetBoards(currentUser.id))
-            .then(() => setIsLoading(false))
+        .then((res) => {
+            console.log('Result from thunkGetBoards: ', res);
+            setIsLoading(false)
+        });
     }, [dispatch, pinId, currentUser.id])
 
     useEffect(() => {
         // console.log(pins)
         // console.log(pinId)
+        dispatch(thunkGetSinglePin(pinId))
         if (pins && pins[pinId]) {
             setTitle(pins[pinId].title)
             setDescription(pins[pinId].description)
@@ -51,8 +61,17 @@ function SinglePin() {
     }, [pins, pinId]);
 
     useEffect(() => {
+        dispatch(thunkGetSinglePin(pinId))
         dispatch(thunkGetPinComments(pinId));
-    }, [dispatch, pinId]);
+        if(pins && pins[pinId]) {
+            dispatch(thunkGetUserById(pins[pinId].user_id))
+            .then((user) => {
+                if (user) {
+                    setPinOwner(user);
+                }
+            });
+        }
+    }, [dispatch, pinId, pins]);
 
     if (isLoading) {
         return <div style={{ color: 'white' }}>Loading...</div>
@@ -126,6 +145,7 @@ function SinglePin() {
         await dispatch(thunkCreateComment(comment));
         setNewComment("");
         dispatch(thunkGetPinComments(pinId));
+        dispatch(thunkGetSinglePin(pinId))
     }
 
     const handleDeleteComment = async (commentId) => {
@@ -138,6 +158,7 @@ function SinglePin() {
         const comment = { comment: editingCommentText };
         const success = await dispatch(thunkUpdateComment(comment, editingCommentId));
         if (success) {
+            dispatch(thunkGetSinglePin(pinId))
             setEditingCommentId(null);
             setEditingCommentTextsContents("");
             dispatch(thunkGetPinComments(pinId))
@@ -157,7 +178,8 @@ function SinglePin() {
                             e.target.src = '/brokenpt2.gif'
                         }}
                         alt={pins[pinId]?.title} />
-                    <h1 className="SinglePin-title">{pins[pinId]?.title}</h1>
+                    <h1 className="SinglePin-title">{pins[pinId]?.title} </h1>
+                    <Link to={`/user/${pinOwner?.id}`}>by {pinOwner?.username} </Link>
                     <p className="SinglePin-description">{pins[pinId]?.description}</p>
 
                     <form onSubmit={handleAddToBoard}>
@@ -243,8 +265,8 @@ function SinglePin() {
                                     <div>
                                         <button onClick={() => handleDeleteComment(comment.id)}>Delete Comment</button>
                                         <button onClick={() => {
-                                            setEditingCommentId(comment.id);
-                                            setEditingCommentTextsContents(comment.comment);
+                                            setEditingCommentId(comment?.id);
+                                            setEditingCommentTextsContents(comment?.comment);
                                         }}>
                                             Edit
                                         </button>

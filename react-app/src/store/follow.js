@@ -4,6 +4,7 @@ export const UNFOLLOW_USER = 'follows/UNFOLLOW_USER'
 export const USER_FOLLOWING = 'follows/USER_FOLLOWING'
 export const USERS_FOLLOWERS = 'follows/USERS_FOLLOWERS'
 
+
 export const followUser = (userId) => ({
     type: FOLLOW_USER,
     userId
@@ -35,6 +36,8 @@ export const thunkFollowUser = (userId) => async (dispatch) => {
         body: JSON.stringify({user_id: userId})
     })
     if (res.ok){
+        // const data = await res.json()
+        console.log("FOLLOW USER THUNK SUCCESS", res)
         dispatch(followUser(userId))
         // return true
     }
@@ -53,6 +56,8 @@ export const thunkUnfollowUser = (userId) => async(dispatch) => {
         body: JSON.stringify({user_id: userId})
     })
     if (res.ok){
+        // const data = await res.json()
+        console.log("UNFOLLOW USER THUNK SUCCESS", res)
         dispatch(unfollowUser(userId))
         // return true
     }
@@ -102,8 +107,7 @@ const followReducer = (state = initialState, action) => {
         case FOLLOW_USER:
             newState = { ...state, following: [...state.following, action.userId] }
             return newState;
-
-        case UNFOLLOW_USER:
+        case UNFOLLOW_USER: 
             newState = { ...state, following: state.following.filter(id => id !== action.userId) }
             return newState;
 
