@@ -30,7 +30,7 @@ function CreateButton() {
     return (
       <>
         <p style={{marginLeft:'15px', fontWeight:'bold'}} onClick={openMenu}>
-          <i  className="create-button" /> Create<i style={{marginLeft:'5px', marginTop:'3px'}} class="fa-solid fa-angle-down"></i>
+          <i  className="create-button" /> Create<i style={{marginLeft:'5px', marginTop:'3px'}} className="fa-solid fa-angle-down"></i>
         </p>
         <ul className={ulClassName} ref={ulRef}>
           <li style={{listStyle:'none',}}>

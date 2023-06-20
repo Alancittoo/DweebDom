@@ -1,3 +1,18 @@
 .comments-details:hover{
     animation: glow 2s ease-in-out infinite;
   }
+
+.user-Buttons-tabs {
+    border-radius: 8px;
+    border: 1px black solid;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 3px
+}
+
+.user-Buttons-tabs:hover {
+    background-color: rgb(200, 120, 219);
+    color: black;
+    border: 1px solid black;
+}

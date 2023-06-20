@@ -66,18 +66,18 @@ function UserProfile(){
 
     return (
         <div>
-            <h1 style={{color: "white"}}>{profileUser && profileUser.username}</h1>
+            <h1 style={{color: "white"}}>Welcome To {profileUser && profileUser.username}'s Profile!</h1>
 
             {currentUser.id !== Number(userId) && (
                 isFollowing ?
-                <button onClick={handleUnfollow}>Unfollow</button> :
-                <button onClick={handleFollow}>Follow</button>
+                <button className="user-Buttons-tabs" onClick={handleUnfollow}>Unfollow</button> :
+                <button className="user-Buttons-tabs" onClick={handleFollow}>Follow</button>
             )}
 
             <div>
-                <button onClick={() => setActiveTab('pins')}>Pins</button>
-                <button onClick={() => setActiveTab('comments')}>Comments</button>
-                <button onClick={() => setActiveTab('boards')}>Boards</button>
+                <button className="user-Buttons-tabs" onClick={() => setActiveTab('pins')}>Pins</button>
+                <button className="user-Buttons-tabs" onClick={() => setActiveTab('comments')}>Comments</button>
+                <button className="user-Buttons-tabs" onClick={() => setActiveTab('boards')}>Boards</button>
             </div>
 
             {renderTabContent()}

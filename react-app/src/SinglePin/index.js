@@ -285,7 +285,7 @@ function SinglePin() {
                                 )}
                                 {comment.user_id === currentUser.id && (
                                     <div>
-                                        <button className='comments-button' style={{ borderRadius: '10px' }} onClick={() => {
+                                        <button className='comments-button' style={{ borderRadius: '10px', paddingLeft: "8px", paddingRight: "8px" }} onClick={() => {
                                             setEditingCommentId(comment?.id);
                                             setEditingCommentTextsContents(comment?.comment);
                                         }}>
@@ -297,7 +297,7 @@ function SinglePin() {
                             </div>
                         ))}
                         <form onSubmit={handleCommentSubmit}>
-                            <input value={newComment} style={{borderRadius: "10px", border: "1px black solid"}} onChange={e => setNewComment(e.target.value)} placeholder="Add a comment" />
+                            <input value={newComment} style={{borderRadius: "10px", border: "1px black solid", paddingLeft: "8px", paddingRight: "8px"}} onChange={e => setNewComment(e.target.value)} placeholder="Add a comment" />
                             <button type="submit" className='comments-button' style={{ borderRadius: '10px' }}>Submit Comment</button>
                         </form>
                     </div>
