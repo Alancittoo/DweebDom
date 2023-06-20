@@ -33,6 +33,8 @@ function SinglePin() {
     const [editingCommentText, setEditingCommentTextsContents] = useState("");
     const [commentUsers, setCommentUsers] = useState({});
     const [pinOwner, setPinOwner] = useState(null);
+    const [commentError, setCommentError] = useState("");
+    const [createCommentError, setCreateCommentError] = useState("");
 
     useEffect(() => {
         console.log('Pin ID from useParams: ', pinId)
@@ -70,7 +72,7 @@ function SinglePin() {
                         setPinOwner(user);
                     }
                 });
-                //Grabbin the comments users , Needs fixin
+            //Grabbin the comments users , Needs fixin
             Object.values(comments).forEach(comment => {
                 dispatch(thunkGetUserById(comment.user_id))
                     .then(user => {
@@ -148,6 +150,18 @@ function SinglePin() {
 
     const handleCommentSubmit = async (e) => {
         e.preventDefault();
+
+
+        if (newComment.trim().length < 3) {
+            setCreateCommentError("Comment must have at least 3 characters");
+            return;
+        }
+
+        if (newComment.trim().length > 40) {
+            setCreateCommentError("Comment must not exceed 40 characters");
+            return;
+        }
+
         const comment = {
             comment: newComment,
             user_id: currentUser.id,
@@ -157,6 +171,7 @@ function SinglePin() {
         setNewComment("");
         dispatch(thunkGetPinComments(pinId));
         dispatch(thunkGetSinglePin(pinId))
+        setCreateCommentError("")
     }
 
     const handleDeleteComment = async (commentId) => {
@@ -167,8 +182,18 @@ function SinglePin() {
     const handleUpdateComment = async (e) => {
         e.preventDefault();
 
-        if(editingCommentText.trim() === "") {
-            alert("Comment cannot be empty");
+        if (editingCommentText.trim() === "") {
+            setCommentError("Comment cannot be empty");
+            return;
+        }
+
+        if (editingCommentText.trim().length < 3) {
+            setCommentError("Comment must have at least 3 characters");
+            return;
+        }
+
+        if (editingCommentText.trim().length > 40) {
+            setCommentError("Comment must not exceed 40 characters");
             return;
         }
 
@@ -179,6 +204,7 @@ function SinglePin() {
             setEditingCommentId(null);
             setEditingCommentTextsContents("");
             dispatch(thunkGetPinComments(pinId))
+            setCommentError("")
         } else {
             return false
         }
@@ -273,6 +299,7 @@ function SinglePin() {
                                             value={editingCommentText}
                                             onChange={e => setEditingCommentTextsContents(e.target.value)}
                                         />
+                                        {commentError && <div style={{ color: 'red' }}>{commentError}</div>}
                                         <button className='comments-button' style={{ borderRadius: '10px' }} type="submit">Update Comment</button>
                                     </form>
                                 ) : (
@@ -297,7 +324,8 @@ function SinglePin() {
                             </div>
                         ))}
                         <form onSubmit={handleCommentSubmit}>
-                            <input value={newComment} style={{borderRadius: "10px", border: "1px black solid", paddingLeft: "8px", paddingRight: "8px"}} onChange={e => setNewComment(e.target.value)} placeholder="Add a comment" />
+                            <input value={newComment} style={{ borderRadius: "10px", border: "1px black solid", paddingLeft: "8px", paddingRight: "8px" }} onChange={e => setNewComment(e.target.value)} placeholder="Add a comment" />
+                            {createCommentError && <div style={{ color: 'red' }}>{createCommentError}</div>}
                             <button type="submit" className='comments-button' style={{ borderRadius: '10px' }}>Submit Comment</button>
                         </form>
                     </div>

@@ -35,11 +35,16 @@ function Navigation({ isLoaded }) {
 			</div>
 
 			<div className="nav-right">
-				<a href='https://github.com/Alancittoo'>
-				<button style={{border:'none', backgroundColor:'white'}}><i style={{marginRight:'25px', marginBottom:'3px', scale:'1.9', marginLeft:'10px'}} class="fa-brands fa-github"></i></button>
+				<a href='https://github.com/Alancittoo' target='_blank'>
+				<button style={{border:'none', backgroundColor:'white'}}><i style={{marginRight:'1px', marginBottom:'3px', scale:'1.9', marginLeft:'1px'}} class="fa-brands fa-github"></i></button>
+				</a>
+				<a href='https://www.linkedin.com/in/alan-echenique/' target='_blank'>
+				<button style={{border:'none', backgroundColor:'white'}}><i style={{marginRight:'10px', marginBottom:'3px', scale:'1.9', marginLeft:'1px'}} class="fa-brands fa-linkedin"></i></button>
 				</a>
 				{isLoaded && <ProfileButton user={sessionUser} />}
 			</div>
+
+
 		</nav>
 	);
 }
