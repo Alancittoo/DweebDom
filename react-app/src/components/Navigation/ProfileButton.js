@@ -54,9 +54,10 @@ function ProfileButton({ user }) {
           <>
             <li>Welcome {user.username}</li>
             <li>{user.email}</li>
+            <NavLink to={`/user/${currentUser.id}`}><button className='logout-button' style={{marginRight: "5px", marginTop: "25px"}}>My Profile</button></NavLink>
 
             <li>
-            <NavLink to={`/`}><button className='logout-button' onClick={handleLogout}>Log Out</button></NavLink>
+            <NavLink to={`/`}><button className='logout-button' onClick={handleLogout} style={{marginLeft: "2px",}}>Log Out</button></NavLink>
             </li>
           </>
         ) : (
