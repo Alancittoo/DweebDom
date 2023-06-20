@@ -31,21 +31,21 @@ function SinglePin() {
     const comments = useSelector(state => state.comments.comments);
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editingCommentText, setEditingCommentTextsContents] = useState("");
-
+    const [commentUsers, setCommentUsers] = useState({});
     const [pinOwner, setPinOwner] = useState(null);
 
     useEffect(() => {
         console.log('Pin ID from useParams: ', pinId)
         dispatch(thunkGetPins())
-        .then((res) => console.log('Result from thunkGetPins: ', res));
+            .then((res) => console.log('Result from thunkGetPins: ', res));
         dispatch(thunkGetSinglePin(pinId))
-        .then((res) => console.log('Result from thunkGetSinglePin: ', res)); 
+            .then((res) => console.log('Result from thunkGetSinglePin: ', res));
 
         dispatch(thunkGetBoards(currentUser.id))
-        .then((res) => {
-            console.log('Result from thunkGetBoards: ', res);
-            setIsLoading(false)
-        });
+            .then((res) => {
+                console.log('Result from thunkGetBoards: ', res);
+                setIsLoading(false)
+            });
     }, [dispatch, pinId, currentUser.id])
 
     useEffect(() => {
@@ -63,12 +63,23 @@ function SinglePin() {
     useEffect(() => {
         dispatch(thunkGetSinglePin(pinId))
         dispatch(thunkGetPinComments(pinId));
-        if(pins && pins[pinId]) {
+        if (pins && pins[pinId]) {
             dispatch(thunkGetUserById(pins[pinId].user_id))
-            .then((user) => {
-                if (user) {
-                    setPinOwner(user);
-                }
+                .then((user) => {
+                    if (user) {
+                        setPinOwner(user);
+                    }
+                });
+                //Grabbin the comments users , Needs fixin
+            Object.values(comments).forEach(comment => {
+                dispatch(thunkGetUserById(comment.user_id))
+                    .then(user => {
+                        if (user) {
+                            setCommentUsers(oldUsers => {
+                                return { ...oldUsers, [comment.user_id]: user.username }
+                            });
+                        }
+                    })
             });
         }
     }, [dispatch, pinId, pins]);
@@ -259,7 +270,12 @@ function SinglePin() {
                                         <button type="submit">Update Comment</button>
                                     </form>
                                 ) : (
-                                    <p>{comment.comment}</p>
+                                    <div>
+                                        <h5>{comment.comment}</h5>
+                                        {commentUsers[comment.user_id]
+                                            ? <Link to={`/user/${comment.user_id}`}>by {commentUsers[comment.user_id]} </Link>
+                                            : <p>Loading...</p>}
+                                    </div>
                                 )}
                                 {comment.user_id === currentUser.id && (
                                     <div>

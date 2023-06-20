@@ -17,9 +17,9 @@ export const createComment = (comment) => ({
 })
 
 
-export const updateComment = (comment_id) => ({
+export const updateComment = (comment) => ({
     type: UPDATE_COMMENT,
-    comment_id
+    comment
 })
 
 
@@ -78,7 +78,8 @@ export const thunkUpdateComment = (comment, comment_id) => async(dispatch) => {
     })
     if (res.ok){
         const data = await res.json()
-        dispatch(updateComment(data))
+        dispatch(updateComment(data.comment))
+        console.log("UPDATE COMMENT THUNK SUCCESS", res)
         return data
     }
     else {
