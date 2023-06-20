@@ -76,3 +76,15 @@
   color: black;
   border: 1px solid black;
 }
+
+.comments-button:hover {
+  background-color: rgb(204, 176, 209);
+  color: black;
+  border: 1px solid black;
+}
+
+.comments-button {
+  border: 1px black solid;
+  cursor: pointer;
+  margin-left: 15px;
+}

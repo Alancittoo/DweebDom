@@ -66,7 +66,7 @@ function UserProfile(){
 
     return (
         <div>
-            <h1>{profileUser && profileUser.username}</h1>
+            <h1 style={{color: "white"}}>{profileUser && profileUser.username}</h1>
 
             {currentUser.id !== Number(userId) && (
                 isFollowing ?

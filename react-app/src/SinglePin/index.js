@@ -166,6 +166,12 @@ function SinglePin() {
 
     const handleUpdateComment = async (e) => {
         e.preventDefault();
+
+        if(editingCommentText.trim() === "") {
+            alert("Comment cannot be empty");
+            return;
+        }
+
         const comment = { comment: editingCommentText };
         const success = await dispatch(thunkUpdateComment(comment, editingCommentId));
         if (success) {
@@ -267,7 +273,7 @@ function SinglePin() {
                                             value={editingCommentText}
                                             onChange={e => setEditingCommentTextsContents(e.target.value)}
                                         />
-                                        <button type="submit">Update Comment</button>
+                                        <button className='comments-button' style={{ borderRadius: '10px' }} type="submit">Update Comment</button>
                                     </form>
                                 ) : (
                                     <div>
@@ -279,20 +285,20 @@ function SinglePin() {
                                 )}
                                 {comment.user_id === currentUser.id && (
                                     <div>
-                                        <button onClick={() => handleDeleteComment(comment.id)}>Delete Comment</button>
-                                        <button onClick={() => {
+                                        <button className='comments-button' style={{ borderRadius: '10px' }} onClick={() => {
                                             setEditingCommentId(comment?.id);
                                             setEditingCommentTextsContents(comment?.comment);
                                         }}>
                                             Edit
                                         </button>
+                                        <button className='comments-button' style={{ borderRadius: '10px', marginBottom: "12px", border: "none", padding: "5px" }} onClick={() => handleDeleteComment(comment.id)}><i class="fa-solid fa-trash-can"></i>Delete</button>
                                     </div>
                                 )}
                             </div>
                         ))}
                         <form onSubmit={handleCommentSubmit}>
-                            <input value={newComment} onChange={e => setNewComment(e.target.value)} placeholder="Add a comment" />
-                            <button type="submit">Submit Comment</button>
+                            <input value={newComment} style={{borderRadius: "10px", border: "1px black solid"}} onChange={e => setNewComment(e.target.value)} placeholder="Add a comment" />
+                            <button type="submit" className='comments-button' style={{ borderRadius: '10px' }}>Submit Comment</button>
                         </form>
                     </div>
                 </div>
