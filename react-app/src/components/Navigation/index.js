@@ -31,7 +31,7 @@ function Navigation({ isLoaded }) {
 			</div>
 
 			<div className="nav-center">
-				<input type="text" placeholder="Search..." />
+				<input type="text" placeholder="Search Feature coming soon..." />
 			</div>
 
 			<div className="nav-right">
