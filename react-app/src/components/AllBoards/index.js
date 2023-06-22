@@ -6,7 +6,7 @@ import './AllBoards.css'
 
 function AllBoards() {
     const dispatch = useDispatch()
-    console.log(useSelector(state => state))
+    // console.log(useSelector(state => state))
     const boards = useSelector(state => state.boards.allBoards)
     const currentUser = useSelector(state => state.session.user)
     const [boardTitle, setBoardTitle] = useState("")

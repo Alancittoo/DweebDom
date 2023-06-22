@@ -61,7 +61,7 @@ function NewPin() {
             } else {
                 // setImageLoading(false);
                 closeModal()
-                console.log('Waiting didnt work', newPin)
+                // console.log('Waiting didnt work', newPin)
             }
         }
     }
@@ -104,7 +104,7 @@ function NewPin() {
                         id='title'
                         placeholder="Title"
                         onChange={(e) => {
-                            console.log(e.target.value)
+                            // console.log(e.target.value)
                             setTitle(e.target.value)}}
                     />
                 </label>
@@ -116,7 +116,7 @@ function NewPin() {
                         id='description'
                         placeholder="Description"
                         onChange={(e) => {
-                            console.log(e.target.value)
+                            // console.log(e.target.value)
                             setDescription(e.target.value)}}
                         style={{marginTop:'30px'}}
                     />

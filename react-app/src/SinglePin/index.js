@@ -37,7 +37,7 @@ function SinglePin() {
     const [createCommentError, setCreateCommentError] = useState("");
 
     useEffect(() => {
-        console.log('Pin ID from useParams: ', pinId)
+        // console.log('Pin ID from useParams: ', pinId)
         dispatch(thunkGetPins())
             .then((res) => console.log('Result from thunkGetPins: ', res));
         dispatch(thunkGetSinglePin(pinId))
@@ -45,7 +45,7 @@ function SinglePin() {
 
         dispatch(thunkGetBoards(currentUser.id))
             .then((res) => {
-                console.log('Result from thunkGetBoards: ', res);
+                // console.log('Result from thunkGetBoards: ', res);
                 setIsLoading(false)
             });
     }, [dispatch, pinId, currentUser.id])
@@ -59,7 +59,7 @@ function SinglePin() {
             setDescription(pins[pinId].description)
             setImageUrl(pins[pinId].image_url)
         }
-        console.log(imageUrl)
+        // console.log(imageUrl)
     }, [pins, pinId]);
 
     useEffect(() => {
@@ -105,7 +105,7 @@ function SinglePin() {
             return;
         }
         const res = await dispatch(thunkAddPinToBoard(selectedBoardId, pinId))
-        console.log('RES FOR ADDTOBOARD', res)
+        // console.log('RES FOR ADDTOBOARD', res)
         if (res.error) {
             if (res.error === "This pin already exists for the board silly") {
                 console.log('Pin already exists in this board')
@@ -140,7 +140,7 @@ function SinglePin() {
         const pin = { title, description, image_url: imageUrl }
         const res = await dispatch(thunkUpdatePin(pin, pinId))
         if (res) {
-            console.log('PIN', pin)
+            // console.log('PIN', pin)
             dispatch(thunkGetSinglePin(pinId))
             setErrors([])
         }

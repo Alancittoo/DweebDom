@@ -41,7 +41,7 @@ export const thunkGetBoards = (user_id) => async (dispatch) => {
     if (res.ok){
         const data = await res.json()
         const boardsArray = Array.isArray(data) ? data : [data] // make sure Array for comp to work
-        console.log('BOARDSARRAY IN THUNK',boardsArray)
+        // console.log('BOARDSARRAY IN THUNK',boardsArray)
         dispatch(getBoards(boardsArray))
         return boardsArray
     }
@@ -56,7 +56,7 @@ export const thunkGetSingleBoard = (board_id) => async (dispatch) => {
     const res = await fetch(`/api/boards/${board_id}`)
     if (res.ok){
         const data = await res.json()
-        console.log('SINGLEBOARDTHUNK', data)
+        // console.log('SINGLEBOARDTHUNK', data)
         dispatch(getSingleBoard(data))
         return data
     }
@@ -162,7 +162,7 @@ const boardReducer = (state = initialState, action) => {
             return newState;
         case GET_SINGLE_BOARD:
             newState = { ...state, currentBoard: {...state, currentBoard: {...action.board_id}} };
-            console.log('SINGLEBOARDREDUCER',newState)
+            // console.log('SINGLEBOARDREDUCER',newState)
             return newState;
 
         case DELETE_BOARD:

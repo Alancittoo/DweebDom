@@ -15,15 +15,15 @@ import UserComments from "./userComments";
 function UserProfile(){
     const dispatch = useDispatch()
     const { userId } = useParams();
-    console.log('userId', userId);
+    // console.log('userId', userId);
     const currentUser = useSelector(state => state.session.user)
-    console.log('currentUser', currentUser)
+    // console.log('currentUser', currentUser)
     const following = useSelector(state => state.follows.following);
-    console.log('following', following)
+    // console.log('following', following)
     const pins = useSelector(state => state.pins.pins);
     const userPins = Object.values(pins).filter(pin => pin.user_id === Number(userId));
     const profileUser = useSelector(state => state.session.profileUser);
-    console.log(profileUser, 'PROFILEUSER')
+    // console.log(profileUser, 'PROFILEUSER')
     const [activeTab, setActiveTab] = useState('pins');
     const followingSet = new Set(following.map(user => user.id))
 

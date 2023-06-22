@@ -13,7 +13,7 @@ function HomePage() {
     const [profileMenu, setProfileMenu] = useState(false);
     const [currId, setCurrId] = useState(null);
     // console.log('TEST', Object.values(useSelector(state => state.pins)))
-    console.log('SESSIOn', useSelector(state => state))
+    // console.log('SESSIOn', useSelector(state => state))
 
     const pins = Object.values(useSelector(state => state.pins.pins)) || []
 
