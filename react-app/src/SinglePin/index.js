@@ -98,7 +98,7 @@ function SinglePin() {
     const handleAddToBoard = async (e) => {
         e.preventDefault();
         if (!selectedBoardId) {
-            console.log('No board selected')
+            // console.log('No board selected')
             setShowMessage(true)
             setIsDupe(false)
             setIsAdded(false)
@@ -108,18 +108,18 @@ function SinglePin() {
         // console.log('RES FOR ADDTOBOARD', res)
         if (res.error) {
             if (res.error === "This pin already exists for the board silly") {
-                console.log('Pin already exists in this board')
+                // console.log('Pin already exists in this board')
                 setIsAdded(false)
                 setShowMessage(false)
                 setIsDupe(true)
             } else {
-                console.log('Failed to add pin to board')
+                // console.log('Failed to add pin to board')
                 setIsAdded(false)
                 setShowMessage(true)
                 setIsDupe(false)
             }
         } else {
-            console.log('Pin added to board')
+            // console.log('Pin added to board')
             setIsAdded(true)
             setShowMessage(false)
             setIsDupe(false)

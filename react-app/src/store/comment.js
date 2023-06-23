@@ -44,7 +44,7 @@ export const thunkGetUserComments = () => async (dispatch) => {
         return data
     }
     else {
-        console.log("GET USER COMMENTS THUNK FAILED", res)
+        // console.log("GET USER COMMENTS THUNK FAILED", res)
         return false
     }
 }
@@ -63,7 +63,7 @@ export const thunkCreateComment = (comment) => async(dispatch) => {
         return data
     }
     else{
-        console.error("CREATE COMMENT THUNK FAILED", res)
+        // console.log("CREATE COMMENT THUNK FAILED", res)
         return false
     }
 }
@@ -83,7 +83,7 @@ export const thunkUpdateComment = (comment, comment_id) => async(dispatch) => {
         return data
     }
     else {
-        console.log("UPDATE COMMENT THUNK FAILED", res)
+        // console.log("UPDATE COMMENT THUNK FAILED", res)
         return false
     }
 }
@@ -97,7 +97,7 @@ export const thunkDeleteComment = (comment_id) => async(dispatch) => {
         return res
     }
     else {
-        console.log("DELETE COMMENT THUNK FAILED", res)
+        // console.log("DELETE COMMENT THUNK FAILED", res)
         return false
     }
 }
@@ -110,7 +110,7 @@ export const thunkGetPinComments = (pin_id) => async(dispatch) => {
         return data
     }
     else{
-        console.log("GET PIN COMMENTS THUNK FAILED", res)
+        // console.log("GET PIN COMMENTS THUNK FAILED", res)
         return false
     }
 }

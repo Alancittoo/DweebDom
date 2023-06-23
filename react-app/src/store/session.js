@@ -93,36 +93,36 @@ export const signUp = (username, email, password, fname, lname) => async (dispat
 	});
 
 	if (response.ok) {
-		console.log('IT WORKED', {
-			username,
-			email,
-			password,
-			first_name: fname,
-			last_name: lname
-		})
+		// console.log('IT WORKED', {
+		// 	username,
+		// 	email,
+		// 	password,
+		// 	first_name: fname,
+		// 	last_name: lname
+		// })
 		const data = await response.json();
 		dispatch(setUser(data));
 		return null;
 	} else if (response.status < 500) {
-		console.log('not WORKED', {
-			username,
-			email,
-			password,
-			first_name: fname,
-			last_name: lname
-		})
+		// console.log('not WORKED', {
+		// 	username,
+		// 	email,
+		// 	password,
+		// 	first_name: fname,
+		// 	last_name: lname
+		// })
 		const data = await response.json();
 		if (data.errors) {
 			return data.errors;
 		}
 	} else {
-		console.log('DID NOT WORKED', {
-			username,
-			email,
-			password,
-			first_name: fname,
-			last_name: lname
-		})
+		// console.log('DID NOT WORKED', {
+		// 	username,
+		// 	email,
+		// 	password,
+		// 	first_name: fname,
+		// 	last_name: lname
+		// })
 		return ["An error occurred. Please try again."];
 	}
 };
@@ -133,8 +133,8 @@ export const thunkGetUserById = (userId) => async (dispatch) => {
 	if (res.ok) {
 		const user = await res.json();
 		dispatch(setProfileUser(user));
-		console.log(res, 'THUNK GET USER BY ID SUCCESS')
-		console.log(user, "THUNK GET USER BY ID USER INFO")
+		// console.log(res, 'THUNK GET USER BY ID SUCCESS')
+		// console.log(user, "THUNK GET USER BY ID USER INFO")
 		return user
 	}
 };

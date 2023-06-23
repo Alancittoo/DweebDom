@@ -45,7 +45,7 @@ export const thunkGetPins = () => async (dispatch) => {
         return data
     }
     else{
-        console.log("GET ALL PINS THUNK FAILED", res)
+        // console.log("GET ALL PINS THUNK FAILED", res)
         return false
     }
 }
@@ -59,7 +59,7 @@ export const thunkGetSinglePin = (pin_id) => async(dispatch) => {
         return data
     }
     else{
-        console.log("GET PIN THUNK FAILED", res)
+        // console.log("GET PIN THUNK FAILED", res)
         return false
     }
 }
@@ -76,7 +76,7 @@ export const thunkCreatePin = (pin) => async(dispatch) => {
         return data
     }
     else{
-        console.log("CREATE PIN THUNK FAILED", res)
+        // console.log("CREATE PIN THUNK FAILED", res)
         return false
     }
 }
@@ -96,7 +96,7 @@ export const thunkUpdatePin = (pin, pin_id) => async(dispatch) => {
         return data
     }
     else {
-        console.log("UPDATE PIN THUNK FAILED", res)
+        // console.log("UPDATE PIN THUNK FAILED", res)
         return false
     }
 }
@@ -111,7 +111,7 @@ export const thunkDeletePin = (pin_id) => async(dispatch) => {
         return res
     }
     else {
-        console.log("DELETE PIN THUNK FAILED", res)
+        // console.log("DELETE PIN THUNK FAILED", res)
         return false
     }
 }

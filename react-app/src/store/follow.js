@@ -42,7 +42,7 @@ export const thunkFollowUser = (userId) => async (dispatch) => {
         // return true
     }
     else {
-        console.log("FOLLOW USER THUNK FAILED", res)
+        // console.log("FOLLOW USER THUNK FAILED", res)
         return false
     }
 }
@@ -62,7 +62,7 @@ export const thunkUnfollowUser = (userId) => async(dispatch) => {
         // return true
     }
     else{
-        console.log("UNFOLLOW USER THUNK FAILED", res)
+        // console.log("UNFOLLOW USER THUNK FAILED", res)
         return false
     }
 }
@@ -75,7 +75,7 @@ export const thunkGetFollowing = (userId) => async(dispatch) => {
         // return true
     }
     else{
-        console.log("GET FOLLOWING THUNK FAILED", res)
+        // console.log("GET FOLLOWING THUNK FAILED", res)
         return false
     }
 }
@@ -88,7 +88,7 @@ export const thunkGetFollowers = (userId) => async(dispatch) => {
         // return true
     }
     else{
-        console.log("GET FOLLOWERS THUNK FAILED", res)
+        // console.log("GET FOLLOWERS THUNK FAILED", res)
         return false
     }
 }

@@ -46,7 +46,7 @@ export const thunkGetBoards = (user_id) => async (dispatch) => {
         return boardsArray
     }
     else {
-        console.log("GET BOARDS THUNK FAILED", res)
+        // console.log("GET BOARDS THUNK FAILED", res)
         return false
     }
 }
@@ -61,7 +61,7 @@ export const thunkGetSingleBoard = (board_id) => async (dispatch) => {
         return data
     }
     else {
-        console.log("GET SINGLE BOARD THUNK FAILED", res)
+        // console.log("GET SINGLE BOARD THUNK FAILED", res)
         return false
     }
 }
@@ -78,7 +78,7 @@ export const thunkCreateBoard = (board) => async(dispatch) => {
         return data
     }
     else {
-        console.log("CREATE BOARD THUNK FAILED", res)
+        // console.log("CREATE BOARD THUNK FAILED", res)
         return false
     }
 }
@@ -97,7 +97,7 @@ export const thunkUpdateBoard = (board, board_id) => async (dispatch) => {
         return data
     }
     else {
-        console.log("UPDATE BOARD THUNK FAILED", res)
+        // console.log("UPDATE BOARD THUNK FAILED", res)
         return false
     }
 }
@@ -112,7 +112,7 @@ export const thunkDeleteBoard = (board_id) => async (dispatch) => {
         return res
     }
     else {
-        console.log("DELETE BOARD THUNK FAILED", res)
+        // console.log("DELETE BOARD THUNK FAILED", res)
         return false
     }
 }
@@ -126,7 +126,7 @@ export const thunkAddPinToBoard = (board_id, pin_id) => async (dispatch) => {
         dispatch(getSingleBoard(data))
         return data
     } else {
-        console.log("ADD PIN TO BOARD THUNK FAILED", res)
+        // console.log("ADD PIN TO BOARD THUNK FAILED", res)
         return false
     }
 }
@@ -140,7 +140,7 @@ export const thunkDeletePinFromBoard = (board_id, pin_id) => async (dispatch) =>
         dispatch(getSingleBoard(data))
         return data
     } else {
-        console.log("DELETE PIN FROM BOARD THUNK FAILED", res)
+        // console.log("DELETE PIN FROM BOARD THUNK FAILED", res)
         return false
     }
 }
