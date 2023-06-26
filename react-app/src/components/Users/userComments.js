@@ -5,8 +5,11 @@ import { thunkGetSinglePin } from '../../store/pin';
 import { useEffect, useState } from 'react';
 
 
-function UserComments() {
-    const comments = useSelector(state => Object.values(state.comments.comments));
+function UserComments({userId}) {
+    const comments = useSelector(state => {
+        const allComments = Object.values(state.comments.comments);
+        return allComments.filter(comment => comment.user_id == userId);
+    })
     // console.log(comments, "COMMENTS")
     const pins = useSelector(state => state.pins.pins);
     const dispatch = useDispatch()

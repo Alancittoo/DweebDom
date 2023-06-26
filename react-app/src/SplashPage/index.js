@@ -32,7 +32,7 @@ function SplashPage() {
 
     return (
         <>
-            <div className='SplashPage'>
+            <div className='SplashPage-container'>
                 <div className="SplashPage-static">
                     <h1 >
                         Get your next
@@ -44,19 +44,15 @@ function SplashPage() {
                     </h2>
                 </div>
                 <div className="Splashpage-image-container">
-                    {imageArrays.map((urls, i) => (
-                        <div key={i}>
-                            {urls.map((url, j) => (
-                                <img
-                                    key={`${i}-${j}`}
-                                    src={url}
-                                    alt={`image-${j}`}
-                                    id={`img${j + 1}`}
-                                    className={i === currentArrayIndex ? "splashpage-images animated-image" : "hidden"}
-                                    style={{ borderRadius: '10px' }}
-                                />
-                            ))}
-                        </div>
+                    {imageArrays[currentArrayIndex].map((url, j) => (
+                        <img
+                            key={`${currentArrayIndex}-${j}`}
+                            src={url}
+                            alt={`image-${j}`}
+                            id={`img${j + 1}`}
+                            className="splashpage-images animated-image"
+                            style={{ borderRadius: '10px' }}
+                        />
                     ))}
                 </div>
             </div>

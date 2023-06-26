@@ -16,3 +16,19 @@
     color: black;
     border: 1px solid black;
 }
+
+.users-profile-interaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.interaction-portion{
+    margin-top: 25px;
+    margin-left: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    
+}

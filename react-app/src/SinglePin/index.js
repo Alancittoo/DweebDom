@@ -39,13 +39,9 @@ function SinglePin() {
     useEffect(() => {
         // console.log('Pin ID from useParams: ', pinId)
         dispatch(thunkGetPins())
-            .then((res) => console.log('Result from thunkGetPins: ', res));
         dispatch(thunkGetSinglePin(pinId))
-            .then((res) => console.log('Result from thunkGetSinglePin: ', res));
-
         dispatch(thunkGetBoards(currentUser.id))
-            .then((res) => {
-                // console.log('Result from thunkGetBoards: ', res);
+            .then(() => {
                 setIsLoading(false)
             });
     }, [dispatch, pinId, currentUser.id])

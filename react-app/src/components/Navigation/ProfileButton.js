@@ -57,12 +57,13 @@ function ProfileButton({ user }) {
             <NavLink to={`/user/${currentUser.id}`} onClick={closeMenu}><button className='logout-button'  style={{marginRight: "5px", marginTop: "25px"}}>My Profile</button></NavLink>
 
             <li>
-            <NavLink to={`/`}><button className='logout-button' onClick={handleLogout} style={{marginLeft: "2px",}}>Log Out</button></NavLink>
+            <NavLink to={`/`}><button className='logout-button' onClick={handleLogout} style={{marginLeft: "1px", marginBottom: "10px"}}>Log Out</button></NavLink>
             </li>
           </>
         ) : (
           <>
-            <div className='initial-login-button'>
+            <h1 style={{marginTop: "20px", marginLeft: "18px", fontSize: "18px"}}>Welcome to DweebDom</h1>
+            <div className='initial-login-button' style={{marginTop: '2px'}} >
             <OpenModalButton
               buttonText="Log In"
               onButtonClick={closeMenu}
@@ -70,11 +71,12 @@ function ProfileButton({ user }) {
             />
             </div>
 
-            <div className="initial-signup-button">
+            <div className="initial-signup-button" style={{marginBottom: "10px"}}>
             <OpenModalButton
               buttonText="Sign Up"
               onButtonClick={closeMenu}
               modalComponent={<SignupFormModal />}
+
             />
             </div>
           </>

@@ -36,8 +36,8 @@ export const deleteComment = (comment_id) => ({
 
 ////////////////////////                               THUNKS                   ////////////////////////////////////////////////
 
-export const thunkGetUserComments = () => async (dispatch) => {
-    const res = await fetch(`/api/comments/userComments`)
+export const thunkGetUserComments = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/comments/userComments/${userId}`)
     if (res.ok){
         const data = await res.json()
         dispatch(getUserComments(data.UsersComments))

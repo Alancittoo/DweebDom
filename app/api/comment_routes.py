@@ -5,10 +5,9 @@ from ..forms.comment_form import CommentForm, CommentUpdateForm
 
 comment_routes = Blueprint('comments', __name__)
 
-@comment_routes.route('/userComments')
+@comment_routes.route('/userComments/<int:user_id>')
 @login_required
-def user_comments():
-    user_id = current_user.id
+def user_comments(user_id):
     res = Comment.query.filter_by(user_id = user_id).all()
     return {"UsersComments": [comment.to_dict() for comment in res]}
 
