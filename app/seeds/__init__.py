@@ -59,7 +59,7 @@ def undo():
     undo_like
     # Add other undo functions here
 
-
+#pipenv shell
 
 # pipenv run flask db init
 # pipenv run flask db migrate
@@ -67,3 +67,5 @@ def undo():
 # pipenv run flask seed all
 
 # pipenv run flask seed undo
+
+ #pipenv flask run
